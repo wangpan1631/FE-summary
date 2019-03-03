@@ -56,6 +56,11 @@
 前端工程化
 后面再慢慢补充
 
-2. 优质资料汇总
-#### vue
-https://github.com/PanJiaChen/vue-element-admin
+#### 优质资料汇总
+
+1. [手摸手带你完成vue后台管理系统](https://github.com/PanJiaChen/vue-element-admin "vue")
+
+2. [js开发者应懂的33个概念](https://github.com/stephentian/33-js-concepts "")
+3. [es6完全使用手册](https://juejin.im/post/5bfe05505188252098022400 "es6手册")
+
+
