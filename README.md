@@ -62,5 +62,5 @@
 
 2. [js开发者应懂的33个概念](https://github.com/stephentian/33-js-concepts "")
 3. [es6完全使用手册](https://juejin.im/post/5bfe05505188252098022400 "es6手册")
-
-
+4. [web前端学习资源分享](https://juejin.im/post/5a0c1956f265da430a501f51 "学习资源")
+5. [react、redux、双向数据绑定、函数式编程、手写promise、手写状态管理](https://juejin.im/post/5c1f01fef265da61587723f4 "五星好文")
