@@ -1,0 +1,1 @@
+1. js中的map some every forEach用法总结：https://blog.csdn.net/weixin_36934930/article/details/81061063
