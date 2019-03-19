@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>interview test</title>
+</head>
+<body>
+    <script>
+    // 普通的构造函数
+        function Animal(name){
+            this.name = name;
+            this.eat = function () {
+                console.log('animal eat');
+            }
+        }
+        function Dog (){
+            this.name = name;
+            this.bark = function(){
+                console.log('dog eat');
+            }
+        }
+        Dog.prototype = new Animal();
+        const hashiqi = new Dog('hashiqi');
+
+        class Animal {
+            constructor(name){
+                this.name = name;
+            }
+            eat (){
+                console.log('eat eat');
+            }
+        }
+        class Dog extends Animal {
+            constructor(name){
+                super(name);// **把Animal的构造器也执行一遍
+                this.name = name;
+            }
+            bark(){
+                console.log('bark bark');
+            }
+        }
+        const hashiqi = new Dog();
+
+    </script>
+</body>
+</html>

@@ -105,6 +105,13 @@ export default {
 模块化标准：AMD CMD
 语法：import export (注意有无default)
 2. Class和普通构造函数有和区别
+* class在语法上更加贴合面向对象的写法
+* class实现继承更加易读、易理解
+* 更易于写Java等后端语言的使用
+* 本质还是语法糖，使用prototype
+
+
+
 ```
 class MathHandle {
     //构造器，跟php很像
@@ -134,3 +141,7 @@ console.log(m.add());
 ```
 class 是语法糖，什么是语法糖，
 双越对class语法糖的看法，这种语法糖形式，看起来和实际原理不一样的东西，我个人不赞同，形式上强行模仿java c# 却失去了它的本性和个性
+
+3. promise
+promise出现是为了解决callback hell
+
