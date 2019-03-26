@@ -74,10 +74,17 @@ obj.double(); //2
 * 箭头函数不能当做Generator函数,不能使用yield关键字
 
 **总结：**
-1. 箭头函数的 this 永远指向其上下文的  this ，任何方法都改变不了其指向，如 call() ,  bind() ,  apply() 
-2. 普通函数的this指向调用它的那个对象
+*  箭头函数的 this 永远指向其上下文的  this ，任何方法都改变不了其指向，如 call() ,  bind() ,  apply() 
+*  普通函数的this指向调用它的那个对象
 
 todo :看一下es 箭头函数的讲解
+
+
+3. call apply bind区别
+* apply参数是数组形式
+
+4. HTTP协议
+HTTP协议是Hyper Text Transfer Protocol(超文本传输协议)的缩写，是用于从万维网服务器传输超文本到本地浏览器的传送协议。HTTP是基于TCP/IP协议通信协议来传递数据（HTML文件、图片文件、查询结果等）。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。
 
 
 

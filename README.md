@@ -80,3 +80,8 @@ JS有7种内置类型，分为两大类型：基本类型和对象Object
 3. [es6完全使用手册](https://juejin.im/post/5bfe05505188252098022400 "es6手册")
 4. [web前端学习资源分享](https://juejin.im/post/5a0c1956f265da430a501f51 "学习资源")
 5. [react、redux、双向数据绑定、函数式编程、手写promise、手写状态管理](https://juejin.im/post/5c1f01fef265da61587723f4 "五星好文")
+
+**async/await系列**
+6. [async/await](https://juejin.im/post/5c98ca366fb9a0710f47f1e5 "async/await")
+7. [async/await讲解](https://juejin.im/post/5ab60c606fb9a028bc2db1d4 "async/await")
+8. [async/await的好处](https://zhuanlan.zhihu.com/p/26505825 "async/await")
