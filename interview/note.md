@@ -41,6 +41,7 @@
 JS有7种内置类型，分为两大类型：基本类型和对象Object
 
 * 基本类型：string  number  boolean null  undefined symbol
+* symbol, [symbol学习笔记](https://www.cnblogs.com/zczhangcui/p/6435652.html "symbol学习笔记")
 * 对象：function array regx object
 
 四则运算符号：
@@ -50,6 +51,10 @@ JS有7种内置类型，分为两大类型：基本类型和对象Object
 'a' + + 'b' //aNaN
 [1, 2] + [3, 4] // 1, 23, 4
 ```
+
+[彻底搞懂JS==运算](https://segmentfault.com/a/1190000006012804 "彻底搞懂JS==运算")
+
+[相关primitive操作](https://blog.csdn.net/suxuelengyin/article/details/82759437 "相关primitive操作")
 
 2. js箭头函数和普通函数的区别
 * this指向不一样，普通函数的this是谁调用指向谁（佳佳说不要这样说~但目前不知道更深入的），不然就指向window，可以通过把this赋值给一个变量解决，也可以通过bind(this)解决；箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值
@@ -77,7 +82,7 @@ obj.double(); //2
 *  箭头函数的 this 永远指向其上下文的  this ，任何方法都改变不了其指向，如 call() ,  bind() ,  apply() 
 *  普通函数的this指向调用它的那个对象
 
-todo :看一下es 箭头函数的讲解
+todo :看一下es6 箭头函数的讲解
 
 
 3. call apply bind区别
@@ -86,5 +91,162 @@ todo :看一下es 箭头函数的讲解
 4. HTTP协议
 HTTP协议是Hyper Text Transfer Protocol(超文本传输协议)的缩写，是用于从万维网服务器传输超文本到本地浏览器的传送协议。HTTP是基于TCP/IP协议通信协议来传递数据（HTML文件、图片文件、查询结果等）。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。
 
+5. JS原型是个理解难点，每次看都是晕的，怎么办？
 
+6. 关于this，记好下面几个规则就行了(多刷点关于this的面试题)
+* 指向调用函数前的对象（也就是谁调用就指向谁）
+```
+function foo() {
+		console.log(this.a)
+	}
+	var a = 3
+	foo() // 3  this -> window
+	var a = 2;
+	var obj = {
+		a: 2,
+		foo: foo
+	}
+	obj.foo() // 2 this -> obj
+```
+* 优先级最高的一种this，就是通过new 声明实例的时候，会自动绑定this到声明的实例上，不会被任何方式修改this指向，如下代码:
+```
+var c = new foo();
+c.a = 3;
+console.log(c.a);
+```
+上面的例子不太好，看不出怎么new的优先级就最高了
+* 利用call, apply, bind改变this，这个优先级仅次于new
+* 箭头函数的this
+
+7. **执行上下文之函数和变量的提升**，通常提升的解释是说将声明的代码转移到了顶部，这其实没有什么错误，便于大家理解，但是更准确的解释应该是：在生产执行上下文时，会有两个阶段，第一个阶段是创建的阶段（具体步骤是创建vo），JS解释器会找出需要提升的变量和函数，并且给他们提前在内存中开辟好空间，函数的话会将整个函数存入内存中，变量只声明并且赋值为undefined，所以在第二个阶段，也就是代码执行阶段，我们可以直接提前使用，**在提升的过程中，相同的函数会覆盖上一个函数，并且函数优先于变量提升**
+```
+  console.log(b()); // call b second
+  console.log(b); // 打印出来是最后声明的b的函数体，这里体现了函数优先于变量提升的原则
+	function b(){
+		console.log('call b first');
+	}
+
+	function b(){
+		console.log('call b second');
+	}
+
+
+	var b = 'hello world';
+
+```
+8. 在ES6中引入了const let，const let不能在声明前使用（如果在声明前使用了，会报错），但是这并不是常说的let/const不会提升，let/const提升了但没有赋值，因为临时死区导致了并不能在声明前使用。对于非匿名的立即执行函数需要注意以下一点：
+```
+var foo = 1;
+(function foo(){
+  foo = 10;
+  console.log(foo);
+})() // -> f foo(){ foo = 10; console.log(foo)}
+
+var a=1;          
+(function a(){
+    console.log(1,a); // 打印a函数体
+    a=2;
+    console.log(2,a); // 打印a函数体
+    delete a;
+    console.log(3,a); // 打印a函数体
+})();
+console.log(4,a); // 1
+```
+
+因为当JS解释器在遇到非匿名的立即执行函数时，会创建一个辅助的特定对象，然后将函数名称作为这个对象的属性，因此函数内部才可以访问到foo, 但是这有个值是**只读**的，所有对它的赋值并不生效，所以打印的结果还是这个函数，并且外部的值也没有发生更改。
+
+9. **闭包**：闭包的定义很简单：函数A返回了一个函数B，并且函数B中使用了函数A的变量，函数B就被称为闭包。下面是经典面试题：
+```
+	for (var i=1; i<=5; i++) {
+		setTimeout(function timer(){
+			console.log(i);
+		}, i*1000)
+	}
+```
+首先因为 setTimeout 是个异步函数，所有会先把循环全部执行完毕，这时候 i 就是 6 了，所以会输出一堆 6。解决方法如下：
+```
+// 法一，使用闭包
+for (var i=1; i<=5; i++) {
+  (function(j){
+    setTimeout(function timer(){
+      console.log(j);
+    }, j*1000)
+  })(i)
+}
+// 法二 ，使用setTimeout的第三个参数(setTimeout的第三个参数会作为第一个函数的参数)
+	for (var i=1; i<=5; i++) {
+		setTimeout(function timer(){
+			console.log(i);
+		}, i*1000, i)
+	}
+// 法三：使用let定义i，let会创建一个块级作用域
+	for (let i=1; i<=5; i++) {
+		setTimeout(function timer(){
+			console.log(i);
+		}, i*1000)
+	}
+```
+[从闭包到setTimeout第三个参数](http://caibaojian.com/settimeout-pram3.html "从闭包到setTimeout第三个参数")
+
+* setTimeout第三个参数作为它里面的第一个函数的参数！！！
+
+10. 深拷贝和浅拷贝，面试必考题，一定要搞清楚，并且要知道每种方法的优缺点，达到可以手写的程度，方能应对面试
+```
+var obj1 = {
+  name: 'wangpan',
+  age: 29
+}
+var obj2 = Object.assign({}, obj1);
+var obj2 = {...obj1};
+// 对于像obj1这种属性值都是基本类型的对象，使用上面两种方法可以实现深拷贝，但是如果属性值是引用类型，这种方法就不行了。
+```
+[彻底说清深拷贝和浅拷贝](https://segmentfault.com/a/1190000012828382 "彻底说清深拷贝和浅拷贝")
+
+[深拷贝与浅拷贝](https://www.cnblogs.com/echolun/p/7889848.html "深拷贝与浅拷贝")
+
+11. JS new对象的四个过程
+```
+function Person(name, age){
+  this.name = name;
+  this.age = age;
+}
+var person = new Person('Alice', 23);
+```
+1. 创建一个空对象
+```
+var obj = new Object();
+```
+2. 让Person中的this指向obj，并执行Person的函数体
+```
+var result = Person.call(obj);
+```
+3. 设置原型链，将obj的__ptoto__成员指向了Person函数对象的prototype成员对象
+```
+obj.__proto__ = Person.prototype;
+```
+4. 判断Person的返回值类型，如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象。
+(**注意：若构造函数中返回this或返回值是基本类型（number、string、boolean、null、undefined）的值，则返回新实例对象；若返回值是引用类型的值，则实际返回值为这个引用类型。**)
+```
+if (typeof(result) == 'object') {
+  person = result;
+} else {
+  person = obj;
+}
+```
+
+12. instanof 可以正确的判断对象的类型，因为内部机制是通过判断对象的原型链中是不是能找到类型的prototype。使用举例：
+```
+[1] instanceof Array
+
+class Person {
+		constructor(name){
+			this.name = name;
+		}
+		say () {
+			return this.name;
+		}
+}
+const wang = new Person('pandora');
+console.log('---data--', wang instanceof Person);
+```
 

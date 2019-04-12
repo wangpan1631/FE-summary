@@ -22,8 +22,27 @@
 
 [深入理解浏览器的缓存机制](https://mp.weixin.qq.com/s/atQsH3a3fz7d_-Ra_dsPGg "深入理解浏览器的缓存机制")
 
+[深入了解浏览器存储](https://mp.weixin.qq.com/s/aWUso1FNiAGNff105ibq5w "深入了解浏览器存储")
+
 [彻底弄懂 JavaScript 执行机制](https://juejin.im/post/59e85eebf265da430d571f89 "彻底弄懂 JavaScript 执行机制")
 
 **深拷贝**
 
 [深拷贝终极探索](https://segmentfault.com/a/1190000016672263 "深拷贝终极探索")
+
+**性能优化**
+
+[前端性能优化](https://mp.weixin.qq.com/s/DapiwE-AhML-Mm4r0b_sWg "前端性能优化")
+
+**前端知识集锦类**
+
+[陌上寒前端吹水](https://www.qdtalk.com/docs/#/ "陌上寒前端吹水")
+
+[前端知识图谱](https://github.com/InterviewMap/CS-Interview-Knowledge-Map "前端知识图谱")
+
+**Mysql入门全套**
+[mysql入门](https://mp.weixin.qq.com/s/RqN4scjxEGKhC8ss_GQPkw "mysql入门")
+
+
+**大佬的博客**
+[jason blog](https://jasonandjay.github.io/study/ "jason blog")

@@ -58,6 +58,8 @@ console.log('Hi!');
 
 [阮一峰ES6](http://es6.ruanyifeng.com/#docs/async "阮一峰ES6")
 
+[异步编程六种方案](https://mp.weixin.qq.com/s/AP1OQAMowQNa75uwdsI79w "异步编程六种方案")
+
 **async/await**
 
 [async/await](https://juejin.im/post/5c98ca366fb9a0710f47f1e5 "async/await")
