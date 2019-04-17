@@ -200,6 +200,7 @@ var obj2 = Object.assign({}, obj1);
 var obj2 = {...obj1};
 // 对于像obj1这种属性值都是基本类型的对象，使用上面两种方法可以实现深拷贝，但是如果属性值是引用类型，这种方法就不行了。
 ```
+> 要考虑数组的情况，各种深拷贝的实现方法，及其优缺点
 [彻底说清深拷贝和浅拷贝](https://segmentfault.com/a/1190000012828382 "彻底说清深拷贝和浅拷贝")
 
 [深拷贝与浅拷贝](https://www.cnblogs.com/echolun/p/7889848.html "深拷贝与浅拷贝")
@@ -249,4 +250,13 @@ class Person {
 const wang = new Person('pandora');
 console.log('---data--', wang instanceof Person);
 ```
+
+13. 防抖和节流，防抖是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。
+* 防抖(debounce)：就是指触发事件后在n秒内函数只能执行一次，如果在n秒内又触发了事件，则会重新计算函数执行时间。
+* 节流(throttle)：就是指连续触发事件但是在n秒中只执行一次函数。节流会稀释函数的执行频率。
+
+[防抖与节流](https://www.jianshu.com/p/c8b86b09daf0 "防抖与节流")
+[JS奇淫巧技之防抖与节流](https://www.cnblogs.com/chenqf/p/7986725.html "JS奇淫巧技之防抖与节流")
+
+14. JS中的继承
 
