@@ -47,3 +47,16 @@
 
 **大佬的博客**
 [jason blog](https://jasonandjay.github.io/study/ "jason blog")
+
+**nginx**
+[前端开发者必备的nginx知识](https://mp.weixin.qq.com/s/8nSRGcLXIG603igj9qk6og "前端开发者必备的nginx知识")
+
+**redux**
+[redux源码分析](https://mp.weixin.qq.com/s/LCZVNVchMvn0nWkM2lALWA "redux源码分析")
+
+**webpack**
+[webpack之loader](https://juejin.im/post/5cc3fa935188252eb30b7713 "webpack之loader")
+
+**vue**
+[vue分析](https://ustbhuangyi.github.io/vue-analysis/ "vue分析")
+
