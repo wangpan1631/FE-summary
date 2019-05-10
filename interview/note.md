@@ -7,31 +7,69 @@
 
 3. 层叠上下文
 
-4. 居中布局：详见centerLayout代码
+4. **居中布局：详见centerLayout代码**
 
 * 水平居中 - 行内元素: text-align: center - 块级元素: margin: 0 auto - absolute + transform - flex + justify-content: center
 * 垂直居中 - line-height: height - absolute + transform - flex + align-items: center - table
 * 水平垂直居中- absolute + transform - flex + justify-content + align-items
 
-5. 选择器优先级（选择器从右往左解析，这样的好处是尽早的过滤掉一些无关的样式规则和元素）
+5. **选择器优先级（选择器从右往左解析，这样的好处是尽早的过滤掉一些无关的样式规则和元素）**
 * !important > 行内样式 > #id > .class > tag > *(通配符选择器) > 继承 > 默认
-* !important > 行内样式>ID选择器 > 类选择器 > 标签 > 通配符 > 继承 > 浏览器默认属性
+* !important > 行内样式> ID选择器 > 类选择器 > 标签 > 通配符 > 继承 > 浏览器默认属性
 
 **css三大特性：**
 * 继承：即子类元素继承父类的样式
 * 优先级：不同类别样式的权重比较
 * 层叠：是说当数量相同时，通过层叠（后者覆盖前者）的样式
 
-6. 去除浮动影响，防止父级高度塌陷
+6. **去除浮动影响，防止父级高度塌陷**
 * 通过增加尾元素清楚浮动- :after/:clear:both
 * 创建父级BFC
 * 父级设置高度
 
-7. link与@import的区别
+7. **link与@import的区别**
 * link功能较多，可以定义RSS，定义Rel等作用，而@import只能用于加载css
 * 当解析到link时，页面会同步加载所引的CSS，而@import所引用的css会等到页面加载完才被加载
 * @import需要IE5以上才能使用
 * link可以使用js动态引入，@import不行
+
+8. **用css实现一个箭头向上的三角形**
+```
+.triangel {
+	width: 0;
+	height: 0;
+	border-width: 20px;
+	border-style: solid;
+	border-color: transparent transparent transparent red;
+}
+```
+
+9. **display:none与visibility:hidden的区别？**
+> display:none 不显示对应的元素，在文档布局中不再分配空间（会引起回流和重绘）
+> visibility:hidden 隐藏对应元素，在文档布局中仍保留原来的空间（会引起重绘）
+> 所以，从性能优化方面来说，应该使用visibility: hidden
+
+10. **元素竖向的百分比设定是相对于容器的高度吗**
+> 当按百分比设定一个元素的宽度时，它是相对于父容器的宽度计算的，但是，对于一些表示竖向距离的属性，例如padding-top/padding-bottom/margin-top/margin-bottom等，当按百分比设定它们时，依据的也是父容器的宽度，而不是高度。
+
+11. **HTML标签语义化**，就是用包含语义的标签恰当地表示文档结构
+> 语义化的好处，简述对语义化的理解
+* 用正确的标签做正确的事情
+* html语义化让页面的内容结构化，结构更清晰，便于对浏览器、搜索引擎解析
+* 即使在没有样式css情况下也以一种文档格式显示，并且是容易阅读的
+* 搜索引擎的爬虫也依赖于HTML来确定上下文和各个关键字的权重，利于SEO
+* 使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解
+
+**用自己的话总结如下：**
+html语义化就是用正确的标签做正确的事情，可以是页面结构清晰，利于阅读理解，利于团队协作维护，对SEO比较友好
+
+12. Doctype作用？标准模式与兼容模式有什么区别？
+> doctype位于HTML文档的第一行，处于html标签之前，**告知浏览器的解析器用什么文档标准解析这个文档**，doctype不存在或格式不正确会导致文档以兼容模式呈现
+> 标准模式的排版和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示，模拟老式浏览器的行为以防止站点无法工作
+
+
+
+
 
 8. css动画
 
