@@ -47,6 +47,7 @@
 
 **大佬的博客**
 [jason blog](https://jasonandjay.github.io/study/ "jason blog")
+[kson blog](http://doudouyoutang.com/study.html?token=I430922725665485 "kson blog")
 
 **nginx**
 [前端开发者必备的nginx知识](https://mp.weixin.qq.com/s/8nSRGcLXIG603igj9qk6og "前端开发者必备的nginx知识")

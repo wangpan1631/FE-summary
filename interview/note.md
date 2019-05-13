@@ -298,3 +298,8 @@ console.log('---data--', wang instanceof Person);
 
 14. JS中的继承
 
+
+#### cllect urls
+
+* [10个前端必会面试题](https://juejin.im/post/5cd10e69f265da03563247e7?utm_source=wechat "10个前端必会面试题")
+
