@@ -1,5 +1,5 @@
 ### learning map
-#### 思维导图
+#### 思维导图，形成自己的知识体系非常重要
 
 #### 基础知识
 #### CSS
@@ -38,7 +38,7 @@
 8. css动画
 
 #### JS
-1. 数据类型（内置类型）
+1. **数据类型（内置类型）**
 JS有7种内置类型，分为两大类型：基本类型和对象Object
 
 * 基本类型：string  number  boolean null  undefined symbol
@@ -101,3 +101,14 @@ JS有7种内置类型，分为两大类型：基本类型和对象Object
 
 * [nodejs应用场景](https://www.cnblogs.com/gassnake999/p/7044583.html "nodejs应用场景")
 
+
+#### 查漏补缺
+##### day 5-16
+**路由**
+[前端路由](https://www.zhihu.com/question/53064386 "前端路由")
+路由，简单说就是根据不同的URL地址展示不同的内容或页面，路由分为兼容性更好的hash实现和H5 history实现。二者区别就是url中是否带有“#”，带“#”的就是hash实现，history模式更加符合标准（hash路由不会导致重定向，在hybrid app中打包html，js到app内的时候非常有用）
+
+**单页SPA和多页MPA的区别**
+[单页应用和多页应用](https://juejin.im/post/5a0ea4ec6fb9a0450407725c "单页应用和多页应用")
+[单页和多页的区别](https://blog.csdn.net/qq_16546829/article/details/81534724 "单页和多页的区别")
+* 单页应用：顾名思义，就是只有一张web页面的应用，浏览器一开始会加载必须的HTML CSS JS, 之后所有的操作都在这张页面上完场，这一切都由js来控制。因此，单页web应用会包含大量的js代码，复杂度可想而知，模块化开发和设计的重要性不言而喻。
