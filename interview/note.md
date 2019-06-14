@@ -40,7 +40,7 @@
 	height: 0;
 	border-width: 20px;
 	border-style: solid;
-	border-color: transparent transparent transparent red;
+	border-color: transparent transparent red transparent;
 }
 ```
 
@@ -50,7 +50,7 @@
 > 所以，从性能优化方面来说，应该使用visibility: hidden
 
 10. **元素竖向的百分比设定是相对于容器的高度吗**
-> 当按百分比设定一个元素的宽度时，它是相对于父容器的宽度计算的，但是，对于一些表示竖向距离的属性，例如padding-top/padding-bottom/margin-top/margin-bottom等，当按百分比设定它们时，依据的也是父容器的宽度，而不是高度。
+> 当按百分比设定一个元素的宽度时，它是**相对于父容器的宽度计算的，但是，对于一些表示竖向距离的属性，例如padding-top/padding-bottom/margin-top/margin-bottom等，当按百分比设定它们时，依据的也是父容器的宽度**，而不是高度。
 
 11. **HTML标签语义化**，就是用包含语义的标签恰当地表示文档结构
 > 语义化的好处，简述对语义化的理解
