@@ -19,10 +19,14 @@
 ⑤ 资源缓存策略，白屏问题......
 看到这个文章了：http://developer.51cto.com/art/201511/496000.htm
 
-Day0613
+**Day0613**
 1. **charles 手机抓包配置**
 [charles手机抓包配置](https://www.cnblogs.com/kaibindirver/p/8615552.html "charles手机抓包配置")
 [charles抓包配置一](https://www.cnblogs.com/shihao905/p/7865639.html "charles抓包配置一")
 [charles配置二](https://www.jianshu.com/p/adcbc085fcae "charles配置二")
 [手机信任证书](https://www.cnblogs.com/1-434/p/7871865.html "手机信任证书")
 [windows安装信任证书](https://blog.csdn.net/qq_15017407/article/details/53634878 "windows安装信任证书")
+
+**Day0615**
+1. [Cookie 与session的产生过程](https://blog.csdn.net/nchu2020/article/details/50535379 "Cookie 与session的产生过程")
+2. [好好了解一下Cookie](https://blog.csdn.net/zhangquan_zone/article/details/77627899 "好好了解一下Cookie")
