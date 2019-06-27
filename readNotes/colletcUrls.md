@@ -64,3 +64,12 @@
 
 
 https://2014.jsconfchina.com/slides/herman-taobaoweb/index.html#/
+
+**代码质量**
+[如何写出优雅的JS代码](https://mp.weixin.qq.com/s/uyw0s_O-v1NkZ4hxYXECPQ "如何写出优雅的JS代码")
+* 一个方法只做一件事情
+* 函数名上体现它的作用
+* 删除重复代码，合并相似函数
+* 尽量不写全局方法
+* 删除弃用代码
+

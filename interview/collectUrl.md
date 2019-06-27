@@ -7,3 +7,8 @@
 [百度面试题](https://mp.weixin.qq.com/s/Z7Msx-GY7RqWB6nNX99y5g "百度面试题")
 
 0613 本来想整理的，但是发现浪费时间，现在有道云笔记看就行，后面有时间了再整理吧。
+
+[20道大厂面试题](https://juejin.im/post/5d124a12f265da1b9163a28d "20道大厂面试题")
+
+**面试技巧**
+[5分钟谈前端面试](https://mp.weixin.qq.com/s/hSD9Mr3Mt72PN5f7LnJ1Ow "5分钟谈前端面试")

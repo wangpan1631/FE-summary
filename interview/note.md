@@ -318,3 +318,6 @@ console.log('---data--', wang instanceof Person);
 1. 反射型：当用户点击一个恶意链接，或者提交一个表单，或者进入一个恶意网站时，注入脚本进入被攻击者的网站。Web服务器将注入脚本，比如一个错误信息，搜索结果等，未进行过滤直接返回到用户的浏览器上。**防范：对字符串进行编码**
 2. DOM型：实际上是前端js代码不够严谨，把不可信的内容插入到了页面，在使用.innerHTML、.outerHMTL、.appendChild、document.write()等API时要特别小心，不要把不可行的数据作为HTML插入页面上，尽量使用.innerText、.textContent、.setAttribute()等。**防范 DOM 型 XSS 攻击的核心就是对输入内容进行转义(DOM 中的内联事件监听器和链接跳转都能把字符串作为代码运行，需要对其内容进行检查)。**
 3. 存储型XSS: 恶意脚本永久存储在目标服务器上。这种攻击常见于带有用户保存数据的网站功能，如论坛发帖、商品评论、用户私信等。**防范：前后端都需要对数据进行转义/过滤**
+
+16. Promise
+[oromise](https://juejin.im/post/5ab20c58f265da23a228fe0f "promise")
