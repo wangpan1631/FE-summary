@@ -73,3 +73,10 @@ https://2014.jsconfchina.com/slides/herman-taobaoweb/index.html#/
 * 尽量不写全局方法
 * 删除弃用代码
 
+**GO**
+[GO框架、库和软件的收录大全](https://github.com/yinggaozhen/awesome-go-cn "GO框架、库和软件的收录大全")
+
+[基于react的多端解决方案](https://taro.jd.com/ "基于react的多端解决方案")
+
+[SCF官方入门](https://cloud.tencent.com/edu/learning/live-1440 "SCF官方入门")
+[node+ts项目搭建](https://juejin.im/post/5b5413755188251aab713d14#heading-4 "node+ts项目搭建")
