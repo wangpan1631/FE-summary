@@ -321,3 +321,8 @@ console.log('---data--', wang instanceof Person);
 
 16. Promise
 [oromise](https://juejin.im/post/5ab20c58f265da23a228fe0f "promise")
+
+17. JavaScript reduce()方法，可以参考菜鸟教程
+
+18. H5和客户端的交互方式有哪些？TODO
+

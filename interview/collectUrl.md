@@ -15,3 +15,5 @@
 
 **刷题指南**
 [leetcode](https://leetcode.com/problemset/all/ "leetcode")
+
+[43道JS基础面试题](https://mp.weixin.qq.com/s/kkSu5NQeRImTWoWCgK6d9A "43道JS基础面试题")

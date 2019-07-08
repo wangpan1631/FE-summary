@@ -7,8 +7,9 @@
 * **Typescript** ，它最大的特点就是它的强类型系统和接口功能，这两个特点在很大程度上弥补了js在开发时因其弱类型给开发者带来的过bug的困扰。
 * **Flutter与dart**，Flutter是Google开发的移动UI框架，用以构架IOS和Android上通用的原生用户界面。**Flutter和现有的React Native和weex的区别是Flutter不需要js引擎，它不需要桥接，运行的就是原生代码，所有速度很快，多段适配也很容易。**
 
-2. **Hybrid**
+2. **Hybrid**（混合应用是指同时使用前端技术与原生技术开发的 App。通常由前端负责大部分界面开发和业务逻辑，原生负责封装原生功能供前端调用，二者以 WebView 作为媒介建立通信，从而既拥有 Web 开发的速度优势，又能拥有强大的原生能力）
 [参考资料一](https://www.cnblogs.com/dailc/p/5930231.html "参考资料一")
+[参考资料二](https://blog.csdn.net/valada/article/details/81639658 "参考资料二")
 * 作为一种混合开发的模式，Hybrid App底层依赖于Native提供的容器(UIWebview)，上层使用Html&Css&JS做业务开发，底层透明化、上层多样化，这种场景非常有利于前端介入，非常适合业务快速迭代。
 * 将静态资源打包至Native中，Native提供js调用原生应用的能力。
 * Hybrid优点：Hybrid开发效率高、跨平台、底层本；Hybrid从业务开发上讲，没有版本问题，有BUG能及时修复。
@@ -18,6 +19,7 @@
 ④ Hybrid的如何设计目录结构以及增量机制如何实现
 ⑤ 资源缓存策略，白屏问题......
 看到这个文章了：http://developer.51cto.com/art/201511/496000.htm
+[Hybrid App原理解析](https://www.cnblogs.com/peakleo/p/10572749.html "Hybrid App原理解析")
 
 **Day0613**
 1. **charles 手机抓包配置**
@@ -30,3 +32,12 @@
 **Day0615**
 1. [Cookie 与session的产生过程](https://blog.csdn.net/nchu2020/article/details/50535379 "Cookie 与session的产生过程")
 2. [好好了解一下Cookie](https://blog.csdn.net/zhangquan_zone/article/details/77627899 "好好了解一下Cookie")
+
+**Day0708**
+[需求分析和开发时间评估](https://mp.weixin.qq.com/s/zi1Af8UXiWq_pXc-yDt50g "需求分析和开发时间评估")
+1. 需求评审和时间评估，用自己评估的工作日乘以一个系数，就属于这种类型。有一篇文章《我在淘宝做前端的这三年——第二年》里也介绍了一种方法也属于这种类型：
+
+* 需求非常明确而且经常这样做：评估的工作日*1.5
+* 需求不清晰，有可能变，但代码和技术方案熟悉：评估的工作日*2
+* 需求不清晰，代码和技术方案也不熟悉需要探索：评估的时间*2.5
+* 越不确定的事，未知的东西越多，风险越高，所以需要留有更多的时间以备不测。
