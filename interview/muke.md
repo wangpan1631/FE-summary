@@ -151,4 +151,29 @@ promise出现是为了解决callback hell
 * 所有的引用类型（数组，对象，函数），__proto__的属性值指向它的构造函数的prototype属性值。
 * 当试图得到一个对象的某个属性是，如果这个对象本身没有这个属性，那么回去它的__proto__（即它的构造函数的prototype）中寻找。
 * 闭包的使用场景：封装变量和收敛权限 (函数作为返回值，函数作为参数传递)
-该看4-1小节了
+
+2. 同步和异步
+* 需要等待的情况就需要使用异步，以下是前端使用异步的场景
+* 定时任务: setInterval、setTimeout
+* 网络请求: ajax请求、动态加载img
+* 事件绑定
+
+* 手写ajax
+```
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/api', false);
+xhr.onreadrstatechange = function () {
+    if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+            alert(xhr.responseText);
+        }
+    }
+}
+xhr.send(null);
+```
+* 存储
+* cookie会在请求中携带，localStorage和sessionStorage不会，前者存储最大是4Kb，后者最大是5M
+* 注意：IOS safari隐藏模式（无痕模式）下，localStorage.getItem会报错，建议统一使用try-catch封装
+看到8-3小节
+
+
