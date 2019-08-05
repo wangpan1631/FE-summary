@@ -61,6 +61,7 @@
 
 **vue**
 [vue分析](https://ustbhuangyi.github.io/vue-analysis/ "vue分析")
+[vue248个知识点](https://juejin.im/post/5d153267e51d4510624f9809 "vue248个知识点")
 
 
 https://2014.jsconfchina.com/slides/herman-taobaoweb/index.html#/
