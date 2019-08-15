@@ -46,4 +46,52 @@
 最近忙的跟狗似的，都没时间学习新东西了记笔记了！
 * [一个可以测试js方法性能的网站](https://jsperf.com/ "一个可以测试js方法性能的网站")
 
+**Day0815**
+在线工具和文档收集：
+[腾讯开发者手册](https://cloud.tencent.com/developer/devdocs "腾讯开发者手册")
+前端技术栈中文文档，最好没有之一，[印记中文](https://docschina.org/ "印记中文")
+[learn git](https://learngitbranching.js.org/ "learn git")
+[babel在线编译](https://babeljs.io/repl "babel在线编译")
+* polyfill online 
+https://polyfill.io/v3/   https://polyfill.alicdn.com/polyfill.min.js
+[browserlist](https://browserl.ist/ "browserlist")
+[gitignore](https://www.gitignore.io/ "gitignore")
+* webpack config
+* https://www.nkgr.app/webpack-config-generator/
+* https://doug2k1.github.io/webpack-generator/
 
+* TypeSearch:typescript的类型文件搜索
+* https://github.com/DefinitelyTyped/DefinitelyTyped
+* https://microsoft.github.io/TypeSearch/
+
+[TypeScript starter](https://www.tslang.cn/samples/index.html "TypeScript starter")
+
+* wapm(webassenbly package manager) https://wapm.io/
+
+* WasmExplorer(wa在线编译器)   http://mbebenita.github.io/WasmExplorer/
+* draw.io   https://www.draw.io/
+[sql.js](http://kripken.github.io/sql.js/examples/GUI/ "sql.js")
+[uTools](https://u.tools/ "uTools")
+[online tools](http://tool.oschina.net/ "online tools")
+[js反编译混淆过的代码](http://jsnice.org/ "js反编译混淆过的代码")
+[online javascript beautifier](https://beautifier.io/ "online javascript beautifier")
+[在线工具](https://tool.lu/index.html "在线工具")
+* cssdb
+* https://cssdb.org/
+* https://preset-env.cssdb.org/features
+
+* css playground
+* https://preset-env.cssdb.org/playground
+
+* stylelint    https://stylelint.io/demo
+* cssnano    https://cssnano.co/guides/optimisations/
+
+* node green
+[node green](https://node.green/ "node green")
+
+[ecmascript-compat-table](http://kangax.github.io/compat-table/es6/ "ecmascript-compat-table")
+[dom lint](https://kangax.github.io/domlint/ "dom lint")
+* es-checker   http://ruanyf.github.io/es-checker/index.cn.html
+* htmlhint https://htmlhint.io/
+* htmllint  http://htmllint.github.io/
+* redis http://try.redis.io/
