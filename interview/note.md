@@ -81,8 +81,26 @@ html语义化就是用正确的标签做正确的事情，可以是页面结构�
 > 基本原理是利用css媒体查询，为不同尺寸的设备适配不同样式
 > 对于低版本的IE，可采用JS获取屏幕宽度，然后通过resize方法来实现兼容
 
+17. 网站图片文件，如何点击下载？而非点击预览？
+```
+<a href="logo.jpg" download>下载</a>
+<a href="logo.jpg" download="网站Logo">下载</a>
+```
+18. ios safari 如何阻止”橡皮筋效果“？
+```
+  $(document).ready(function(){
+      var stopScrolling = function(event) {
+          event.preventDefault();
+      }
+      document.addEventListener('touchstart', stopScrolling, false);
+      document.addEventListener('touchmove', stopScrolling, false);
+  });
+```
 
+19. 设置元素浮动后，该元素的display值会如何变化？设置元素浮动后，该元素的display值自动变成block
 
+20. 如果需要手动写动画，你认为最小时间间隔是多久？
+> 16.7ms多数显示器默认频率是60HZ,即1秒刷新60次，所有理论上最小间隔：1s / 60 * 1000 = 16.7ms
 
 **css动画**
 * animation/keyframe/
@@ -107,6 +125,17 @@ JS有7种内置类型，分为两大类型：基本类型和对象Object
 [彻底搞懂JS==运算](https://segmentfault.com/a/1190000006012804 "彻底搞懂JS==运算")
 
 [相关primitive操作](https://blog.csdn.net/suxuelengyin/article/details/82759437 "相关primitive操作")
+
+* 介绍JS有哪些内置对象？
+> 数据封装类对象：Object Array Boolean Number String
+> 其他对象：Function Arguments Math Date RegExp Erro
+> ES6新增对象：Symbol Map Set Promise Proxy Reflect
+
+* W3C事件的target与currentTarget的区别？
+> target只会出现在事件流的目标阶段
+> currentTarget可能出现在事件流的任何阶段
+> 当事件流处于目标阶段时，二者的指向相同
+> 当事件流处于捕获或冒泡阶段时，current指向当前事件活动的对象（一般为父级） 
 
 2. js箭头函数和普通函数的区别
 * this指向不一样，普通函数的this是谁调用指向谁（佳佳说不要这样说~但目前不知道更深入的），不然就指向window，可以通过把this赋值给一个变量解决，也可以通过bind(this)解决；箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值
