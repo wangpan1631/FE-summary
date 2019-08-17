@@ -137,6 +137,16 @@ JS有7种内置类型，分为两大类型：基本类型和对象Object
 > 当事件流处于目标阶段时，二者的指向相同
 > 当事件流处于捕获或冒泡阶段时，current指向当前事件活动的对象（一般为父级） 
 
+* base64为什么要设置阈值？
+> base64 本身就是为了减少 http 请求的，但是如果为了减少 http 请求，反而影响了css 大小，就需要在网络请求和css文件大小之间做一个权衡
+> 图片资源进行base64编码转码并不能压缩文件；只有较小的图片资源适合进行base64编码转换，因为进行base64编码转换的图片资源往往是放在css中，过大的图片资源转换后导致css文件膨胀，进而影响页面加载效率（css会阻塞页面的渲染，而图片则不会），而较小的图片转换后虽然css大小略有增加，但可以减少一个http请求。
+* 观察值模式和发布订阅模式的区别？
+* 进程和线程是什么关系？
+
+#### webpack相关面试题
+* webpack的loader有哪些设计规范？
+
+
 2. js箭头函数和普通函数的区别
 * this指向不一样，普通函数的this是谁调用指向谁（佳佳说不要这样说~但目前不知道更深入的），不然就指向window，可以通过把this赋值给一个变量解决，也可以通过bind(this)解决；箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值
 * 在箭头函数里面使用call apply对this没有影响，由于this已经在词法层面完成了绑定，通过call apply调用一个函数是，只是传入了一个参数而已
@@ -372,3 +382,50 @@ console.log('---data--', wang instanceof Person);
 
 18. H5和客户端的交互方式有哪些？TODO
 
+19. 什么是Ajax? 如何创建一个Ajax？
+> AJAX(Asynchronous JavaScript And XML) = 异步javascript + XML在后台与服务器进行异步数据交换，不用重载整个网页，实现局部刷新
+```
+var xhr = new XMLHttpRequest();
+xhr.open("POST", url, true);
+xhr.send(data);
+xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhr.onreadystatechange = function () {
+	if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 304)) {
+		fn.call(this, xhr.responseText);
+	}
+};
+```
+
+20. http状态码
+* 100  Continue   继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息
+* 200  OK         正常返回信息
+* 201  Created    请求成功并且服务器创建了新的资源
+* 202  Accepted   服务器已接受请求，但尚未处理
+* 301  Moved Permanently  请求的网页已永久移动到新位置。
+* 302 Found       临时性重定向。
+* 303 See Other   临时性重定向，且总是使用 GET 请求新的 URI。
+* 304  Not Modified 自从上次请求后，请求的网页未修改过。
+
+* 400 Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。
+* 401 Unauthorized 请求未授权。（表示发送的请求需要有通过http认证的认证信息）
+* 403 Forbidden   禁止访问。（表示请求资源的访问被服务器拒绝）
+* 404 Not Found   找不到如何与 URI 相匹配的资源。
+
+* 500 Internal Server Error  最常见的服务器端错误。
+* 503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。
+
+21. 一个页面从输入URL到页面加载显示完成，这个过程都发生了什么？（说的越详细越好）
+[HTTP](https://github.com/poetries/FE-Interview-Questions/blob/master/HTTP.md "HTTP")
+
+22. SPA，是指用户在浏览器加载单一的HTML页面，后续请求都无需再离开此页，缺点不利于SEO
+
+23. 模块化开发：commonjs，主要适用于服务器端nodejs;
+* AMD由requireJS推广产出，提前执行，推崇依赖前置
+* CMS由seaJS推广产出，延迟执行，推崇依赖就近
+* ES6模块  Impot,export
+
+24. 移动端最小触控区域是多大？44 * 44px
+
+25. 移动端的点击事件的延迟时间是多长，为什么会有延迟？如何解决这个延时？
+> 移动端click有300ms延迟，浏览器为了区分”双击“（放大页面）还是”单击“而设计
+> 解决方案：禁用缩放（对safari无效），使用指针事件，使用zepto的tap事件，使用fastclick插件(体积大,压缩后8k)
