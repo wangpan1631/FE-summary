@@ -18,3 +18,10 @@
 1. 当用户在为onClick添加函数时，React并没有将Click事件绑定在DOM上面
 2. 而是在document处监听所有支持的事件，当事件发生并冒泡到document处时，react将事件内容封装交给中间层SyntheticEvent(负责所有事件合成)
 3. 所以当事件触发的时候，对使用统一的分发函数dispatchEvent将指定函数执行。
+
+* react生命周期可以参见[菜鸟教程](https://www.runoob.com/react/react-component-life-cycle.html "菜鸟教程")
+
+* react and vue,参考资料[react和vue的区别](http://caibaojian.com/vue-vs-react.html "react和vue的区别")
+> react推广了virtual DOM，并创造了JSX语法。
+> vue致力解决的问题与react一致，但提供了另外一种解决方案。Vue使用模板系统而不是JSX，使其对现有应用的升级更加容易。模板用的就是普通的HTML，所以更加容易上手。
+> 二者相似之处，她们都是js的UI框架，专注于创造前端的富应用，只有框架的骨架，其他的功能如路由、状态管理是框架分离的组件。二者都使用Virtual DOM
