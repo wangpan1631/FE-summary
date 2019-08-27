@@ -25,3 +25,17 @@
 > react推广了virtual DOM，并创造了JSX语法。
 > vue致力解决的问题与react一致，但提供了另外一种解决方案。Vue使用模板系统而不是JSX，使其对现有应用的升级更加容易。模板用的就是普通的HTML，所以更加容易上手。
 > 二者相似之处，她们都是js的UI框架，专注于创造前端的富应用，只有框架的骨架，其他的功能如路由、状态管理是框架分离的组件。二者都使用Virtual DOM
+
+
+
+
+
+
+# Vuex、Flux、Redux、Redux-saga、Dva、MobX(把组件之间需要共享的状态抽取出来，遵循特定的约定，统一来管理，让状态的变化可以预测)
+# Store
+> 组件不允许直接修改属于store实例的state，**组件必须通过action来改变state，**也就是说，组件里面应该执行action来分发(dispatch)事件通知store去改变。
+# Flux(是一种思想，就像MVC，MVVM之类的)
+> Flux把一个应用分成了4个部分：View Action Dispatcher Store(View不光是用来看的，一般都会有用户操作，用户点击个按钮，改个表单啥的，就需要修改store，Flux要求，View要修改store，必须经过一套流程，有点像刚才Store模式里面说的那样。视图先要告诉Dispatcher，让Dispatcher dispatch一个action，Dispatcher就像是个中转站，收到View发出的action，然后转发给Store，比如新建一个用户，View会发出一个叫addUser的action通过Dispatcher来转发，Dispatcher会把addUser这个action发给所有的store，store就会触发这个action，来更新数据，数据一更新，那么view就跟着更新了，这里需要注意的是：Dispatcher的作用是接收所有的action，然后发给所有的store；store的改变只能通过action，不能通过其他方式)
+# Redux
+- Redux是一个纯函数，对于相同的输入，永远都只有相同的输出，不会影响外部的变量，也不会被外部变量影响，不得改写参数。
+> 
