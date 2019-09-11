@@ -177,7 +177,23 @@ todo :看一下es6 箭头函数的讲解
 
 
 3. call apply bind区别
-* apply参数是数组形式
+* 三者都是改变函数调用时的this指向，call参数是逐个传递的，apply参数是以数组形式；**bind和二者唯一的区别就是不会立刻调用函数，而是返回一个能够以后调用的新函数**
+```
+function greet (lang1, lang2, lang3) {
+  alert(`Hello, my name is ${this.name} and I know ${lang1}, ${lang2}, and ${lang3}`)
+}
+
+const user = {
+  name: 'Tyler',
+  age: 27,
+}
+
+const languages = ['JavaScript', 'Ruby', 'Python']
+
+const newFn = greet.bind(user, languages[0], languages[1], languages[2])
+newFn() // alerts "Hello, my name is Tyler and I know JavaScript, Ruby, and Python"
+
+```
 
 4. HTTP协议
 HTTP协议是Hyper Text Transfer Protocol(超文本传输协议)的缩写，是用于从万维网服务器传输超文本到本地浏览器的传送协议。HTTP是基于TCP/IP协议通信协议来传递数据（HTML文件、图片文件、查询结果等）。它不涉及数据包（packet）传输，主要规定了客户端和服务器之间的通信格式，默认使用80端口。

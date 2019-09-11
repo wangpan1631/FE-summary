@@ -78,11 +78,19 @@ console.log([...myIterable]); // [1, 2, 3]
 * 对象Object
 
 
+#### JS的执行机制(js是一门单线程语言，Event Loop是JS的执行机制)
+[彻底搞懂JS执行机制](https://juejin.im/post/59e85eebf265da430d571f89 "彻底搞懂JS执行机制")
+[深入浅出JS运行机制](https://github.com/ljianshu/Blog/issues/2 "深入浅出JS运行机制")
 
+#### this指向的总结[this](https://juejin.im/post/5b9f176b6fb9a05d3827d03f "this")
+- 查看函数在哪被调用。
+- 点左侧有没有对象？如果有，它就是 “this” 的引用。如果没有，继续第 3 步。
+- 该函数是不是用 “call”、“apply” 或者 “bind” 调用的？如果是，它会显式地指明 “this” 的引用。如果不是，继续第 4 步。
+- 该函数是不是用 “new” 调用的？如果是，“this” 指向的就是 JavaScript 解释器新创建的对象。如果不是，继续第 5 步。
+- 是否在“严格模式”下？如果是，“this” 就是 undefined，如果不是，继续第 6 步。
+- JavaScript 很奇怪，“this” 会指向 “window” 对象。
 
-
-
-
+#### 闭包[闭包](https://segmentfault.com/a/1190000006875662#articleHeader6 "闭包")
 
 
 1. 梳理自己的前端知识架构
