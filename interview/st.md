@@ -115,3 +115,20 @@ const c = { key: 'c' };
 );
 ```
 * 解：输出[1, 2, 0, 1, 2, 3]。[1,2]是我们的初始值。 这是我们开始执行reduce函数的初始值，以及第一个acc的值。 在第一轮中，acc是[1,2]，cur是[0,1]。 我们将它们连接起来，结果是[1,2,0,1]。然后，acc的值为[1,2,0,1]，cur的值为[2,3]。 我们将它们连接起来，得到[1,2,0,1,2,3]。
+
+7. 
+```
+function yideng(){
+    console.log(1);
+}
+(function(){
+    if(false){
+        function yideng(){
+            console.log(2);
+        }
+    }
+    yideng();
+})()
+// 报错 yideng is not a function
+// 不同浏览器上表现不一样
+```
