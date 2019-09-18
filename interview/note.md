@@ -393,7 +393,7 @@ console.log('---data--', wang instanceof Person);
 3. 存储型XSS: 恶意脚本永久存储在目标服务器上。这种攻击常见于带有用户保存数据的网站功能，如论坛发帖、商品评论、用户私信等。**防范：前后端都需要对数据进行转义/过滤**
 
 16. Promise
-[oromise](https://juejin.im/post/5ab20c58f265da23a228fe0f "promise")
+[promise](https://juejin.im/post/5ab20c58f265da23a228fe0f "promise")
 
 17. JavaScript reduce()方法，可以参考菜鸟教程
 

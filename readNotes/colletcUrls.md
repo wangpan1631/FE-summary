@@ -82,3 +82,6 @@ https://2014.jsconfchina.com/slides/herman-taobaoweb/index.html#/
 
 [SCF官方入门](https://cloud.tencent.com/edu/learning/live-1440 "SCF官方入门")
 [node+ts项目搭建](https://juejin.im/post/5b5413755188251aab713d14#heading-4 "node+ts项目搭建")
+
+**函数式编程**
+[函数式编程](https://github.com/BuptStEve/blog/issues/15 "函数式编程")
