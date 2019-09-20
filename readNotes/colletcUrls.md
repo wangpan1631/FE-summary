@@ -34,6 +34,7 @@
 **性能优化**
 
 [前端性能优化](https://mp.weixin.qq.com/s/DapiwE-AhML-Mm4r0b_sWg "前端性能优化")
+[雅虎军规](https://www.imooc.com/learn/50 "雅虎军规")
 
 **前端知识集锦类**
 
@@ -85,3 +86,4 @@ https://2014.jsconfchina.com/slides/herman-taobaoweb/index.html#/
 
 **函数式编程**
 [函数式编程](https://github.com/BuptStEve/blog/issues/15 "函数式编程")
+
