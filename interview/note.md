@@ -421,7 +421,7 @@ xhr.onreadystatechange = function () {
 * 301  Moved Permanently  请求的网页已永久移动到新位置。
 * 302 Found       临时性重定向。
 * 303 See Other   临时性重定向，且总是使用 GET 请求新的 URI。
-* 304  Not Modified 自从上次请求后，请求的网页未修改过。
+* 304  Not Modified 自从上次请求后，请求的网页未修改过。（数据是从缓存读取的），对客户端有缓存情况下服务端的一种响应。
 
 * 400 Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。
 * 401 Unauthorized 请求未授权。（表示发送的请求需要有通过http认证的认证信息）

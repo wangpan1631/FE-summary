@@ -25,3 +25,5 @@
 [大厂高频面试题](https://github.com/ly2011/blog/issues/153 "大厂高频面试题")
 
 [前端面试题](https://blog.csdn.net/u012551928/article/details/88523968#_1 "前端面试题")
+
+[19秋社招面试总结](https://mp.weixin.qq.com/s/UiX8dvAsP7r0nHb-XDmdHA "19秋社招面试总结")
