@@ -17,6 +17,7 @@
 [leetcode](https://leetcode.com/problemset/all/ "leetcode")
 
 [43道JS基础面试题](https://mp.weixin.qq.com/s/kkSu5NQeRImTWoWCgK6d9A "43道JS基础面试题")
+[43道JS基础面试题的github](https://github.com/lydiahallie/javascript-questions "43道JS基础面试题的github")
 
 [前端100问](https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg "前端100问")
 
@@ -27,3 +28,5 @@
 [前端面试题](https://blog.csdn.net/u012551928/article/details/88523968#_1 "前端面试题")
 
 [19秋社招面试总结](https://mp.weixin.qq.com/s/UiX8dvAsP7r0nHb-XDmdHA "19秋社招面试总结")
+
+[JS面试重点](https://mp.weixin.qq.com/s/b2Wh_oRlUEb-dyhMtrEQIQ "JS面试重点")

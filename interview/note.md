@@ -446,3 +446,6 @@ xhr.onreadystatechange = function () {
 25. 移动端的点击事件的延迟时间是多长，为什么会有延迟？如何解决这个延时？
 > 移动端click有300ms延迟，浏览器为了区分”双击“（放大页面）还是”单击“而设计
 > 解决方案：禁用缩放（对safari无效），使用指针事件，使用zepto的tap事件，使用fastclick插件(体积大,压缩后8k)
+
+26. TCP和UDP的区别
+> [面试tcp和udp的区别](https://blog.csdn.net/sifanchao/article/details/82285018 "面试tcp和udp的区别")
