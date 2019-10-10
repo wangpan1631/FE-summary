@@ -16,7 +16,9 @@
 8. a，b变量交换
 > 真是一道思维拓展题，很简单，就看你能想到多少方法[不借助第三个变量交换a,b两个变量值](https://blog.csdn.net/web_hwg/article/details/75045689 "不借助第三个变量交换a,b两个变量值")
 9. 缓存有哪些，有什么区别
+> 强缓存和协商缓存
 10. vue双向绑定的原理
+> 参考[vue双向绑定原理](https://www.jianshu.com/p/23180880d3aa "vue双向绑定原理")
 11. 开发环境热更新优化方式
 12. webpack打包优化做了哪些
 13. 对MVC，MVVM，MVP的理解
