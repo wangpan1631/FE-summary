@@ -450,4 +450,22 @@ xhr.onreadystatechange = function () {
 26. TCP和UDP的区别
 > [面试tcp和udp的区别](https://blog.csdn.net/sifanchao/article/details/82285018 "面试tcp和udp的区别")
 
-27. 
+27. 浏览器存储：cookie、localStorage、sessionStorage
+> cookie, [聊聊cookie](https://segmentfault.com/a/1190000004556040 "聊聊cookie")
+
+28. 浏览器缓存机制，参考[深入理解浏览器缓存机制](https://github.com/ljianshu/Blog/issues/23 "深入理解浏览器缓存机制")
+* 从缓存位置上看分为：service worker 、memory cache 、disk cache 、push cache
+* 缓存策略：通常浏览器缓存策略分为两种：强缓存和协商缓存，并且缓存策略都是通过设置HTTP Header来实现的。
+* **强缓存：不会向服务器发送请求，直接从缓存中读取资源，在chrome控制台的Network选项中可以看到该请求返回200的状态码，并且Size显示from disk cache或from memory cache。强缓存可以通过设置两种 HTTP Header 实现：Expires 和 Cache-Control。**
+* **碎碎念**：这块知识每次看完就忘，看过就忘，得想个办法记住。
+29. 模块化详解，参考[前端模块化](https://github.com/ljianshu/Blog/issues/48 "前端模块化")
+- commonJS，主要node应用采用commonJS模块规范。module变量代表当前模块，是一个对象，它的exports属性(即module.exports)是对外的接口。**加载某个模块，其实是加载该模块的module.exports属性。equire命令的基本功能是，读入并执行一个JavaScript文件，然后返回该模块的exports对象。如果没有发现指定模块，会报错。** commonJS模块的加载机制是，输入的是被输出的值的拷贝。也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。commonJS规范加载模块是同步的，也就是说，只有加载完成，才能执行后面的操作。
+- AMD模式可以用于浏览器环境，并且允许非同步加载模块，也可以根据需要动态加载模块。
+- CMD规范专门用于浏览器，模块的加载是异步的，模块使用时才会加载执行。在Sea.js中，所有js模块都遵循CMD模块定义规范。
+- ES6模块化的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量。commonJS和AMD模块，都只能在运行时确定这些东西。
+* **ES6与commonJS模块的差异**
+- commonJS模块输出的是一个值的拷贝，ES6模块输出的是值的引用。
+- commonJS模块是运行时加载，ES6模块是编译时输出接口。
+- 第二个差异是因为 CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
+- ES6 模块的运行机制与 CommonJS 不一样。ES6 模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。
+* [require和import区别](https://www.zhihu.com/question/56820346 "require和import区别")
