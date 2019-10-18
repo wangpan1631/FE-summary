@@ -262,7 +262,14 @@ console.log(4,a); // 1
 
 因为当JS解释器在遇到非匿名的立即执行函数时，会创建一个辅助的特定对象，然后将函数名称作为这个对象的属性，因此函数内部才可以访问到foo, 但是这有个值是**只读**的，所有对它的赋值并不生效，所以打印的结果还是这个函数，并且外部的值也没有发生更改。
 
-9. **闭包**：闭包的定义很简单：函数A返回了一个函数B，并且函数B中使用了函数A的变量，函数B就被称为闭包。下面是经典面试题：
+9. **闭包**：闭包的定义很简单：函数A返回了一个函数B，并且函数B中使用了函数A的变量，函数B就被称为闭包。（可以把闭包简单理解成 定义在一个函数内部的函数。闭包最大的特点就是它可以记住诞生的环境，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁）
+- 闭包形成条件：函数嵌套、内部函数引起外部函数的局部变量
+- 每个函数都是闭包，每个函数天生都能够记忆自己定义时所处的作用域环境。不管函数走到哪里，定义时的作用域就带到了哪里。
+* 闭包的内存泄漏
+- 全局作用域---只有当页面关闭的时候全局作用域才会销毁；私有的作用域---只有函数执行才会产生
+- 一般情况下，函数执行会形成一个新的私有作用域，当私有作用域中的代码执行完成后，我们当前作用域都会主动的进行释放和销毁，但当遇到函数执行返回了一个引用类型的值，并且在函数的外面被一个其他的东西给接收了，这种情况下一般形成的私有作用域都不会销毁。
+- 划重点了！！！所谓内存泄漏指任何对象在您不再拥有或需要它之后仍然存在。闭包不能滥用，否则会导致内存泄漏，影响网页的性能。**闭包使用完了后，要立即释放资源，将引用变量指向null**
+下面是经典面试题：
 ```
 	for (var i=1; i<=5; i++) {
 		setTimeout(function timer(){
@@ -312,6 +319,8 @@ var obj2 = {...obj1};
 [彻底说清深拷贝和浅拷贝](https://segmentfault.com/a/1190000012828382 "彻底说清深拷贝和浅拷贝")
 
 [深拷贝与浅拷贝](https://www.cnblogs.com/echolun/p/7889848.html "深拷贝与浅拷贝")
+
+[ljianshu 深拷贝与浅拷贝](https://github.com/ljianshu/Blog/issues/5 "ljianshu 深拷贝与浅拷贝")
 
 11. JS new对象的四个过程
 * 先理清楚 new 关键字调用函数都的具体过程，那么写出来就很清楚了
@@ -508,3 +517,128 @@ alert(a);   //输出：'我是变量'
 - 在构造函数模式中，类中(函数体中)出现的this.xxx=xxx中的this是当前类的一个实例
 - call、apply和bind：this 是第一个参数
 - 箭头函数this指向:箭头函数没有自己的this，看其外层的是否有函数，如果有，外层函数的this就是内部箭头函数的this，如果没有，则this是window
+
+34. 细说数组常用遍历的方法: forEach、map、filter、find、every、some、reduce，它们有个共同点：不会改变原始数组。
+- 参考[参考](https://github.com/ljianshu/Blog/issues/31 "参考")
+- forEach
+```
+const colors = ['red', 'blue', 'green'];
+colors.forEach(i => {
+	console.log(i);
+})
+// 再来个例子，遍历数组中的值，并计算总和
+const numbers = [1, 2, 3, 4, 5];
+let sum = 0;
+numbers.forEach(num => sum += num)
+console.log(sum); // 15
+```
+
+- map将数组映射成另一个数组，map通过指定函数处理数组的每个元素，并返回处理后新的数组，map不会改变原始数组。forEach和map的区别在于，forEach没有返回值。map需要返回值，如果不给return，默认返回undefined
+```
+const numbers = [1, 2, 3];
+const doubleNumbers = numbers.map(i => {
+	return i * 2;
+})
+console.log(doubleNumbers); // [2, 4, 6]
+
+// 假定有一个对象数组(A)，将A数中对象某个属性的值存储到B数组中
+var cars = [
+  {model:"Buick",price:"CHEAP"},
+  {model:"BMW",price:"expensive"}
+];
+var prices = cars.map(function(car){
+    return car.price;
+})
+console.log(prices); // ["CHEAP", "expensive"]
+```
+
+- filter: 从数组中找出所有符合指定条件的元素。filter()检查数值元素，并返回符合条件所有元素的数组。filter()不会改变原始数组。
+```
+// 假定有一个对象数组(A)，获取数组中指定类型的对象放到B数组中
+var porducts = [
+  {name:"cucumber",type:"vegetable"},
+  {name:"banana",type:"fruit"},
+  {name:"celery",type:"vegetable"},
+  {name:"orange",type:"fruit"}
+];
+var filtered2 = porducts.filter(function(product){
+  return product.type === "vegetable";
+})
+console.log(filtered2);
+
+// 假定有一个对象数组(A)，过滤掉不满足以下条件的对象 ，条件：蔬菜 数量大于0， 价格小于10
+var products = [
+  {name:"cucumber",type:"vegetable",quantity:0,price:1},
+  {name:"banana",type:"fruit",quantity:10,price:16},
+  {name:"celery",type:"vegetable",quantity:30,price:8},
+  {name:"orange",type:"fruit",quantity:3,price:6}
+];
+products = products.filter(function(product){
+    return product.type === "vegetable" 
+    && product.quantity > 0 
+    && product.price < 10
+})
+console.log(products); // [{name:"celery",type:"vegetable",quantity:30,price:8}]
+```
+- find：返回通过测试（函数内判断）的数组的第一个元素的值，它的参数是一个回调函数，所有数组成员一次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。
+```
+// 假定有一个对象数组(A)，找到符合条件的对象(找到符合条件的元素)
+var users = [
+  {name:"Jill"},
+  {name:"Alex",id:2},
+  {name:"Bill"},
+  {name:"Alex"}
+ ];
+var user;
+user = users.find(i => {
+	return i.name === 'Alex';
+})
+console.log(user); // {name: 'Alex', id:2}
+```
+- every&some: every-数组中是否每个元素都满足指定的条件；some-数组中是否有算是满足指定的条件
+```
+var computers = [
+ {name:"Apple",ram:16},
+ {name:"IBM",ram:4},
+ {name:"Acer",ram:32}
+];
+var every = computers.every(i => {
+	return i.ram > 16;
+})
+console.log(every); // false
+var some = computers.some(i => {
+	return i.ram > 16;
+})
+console.log(some); // true
+```
+**一言以蔽之：some一真即真；every一假即假**
+
+- reduce: 将数组合成一个值, reduce()方法接收一个方法作为累加器，数组中的每个值（从左到右）开始合并，最终为一个值。
+```
+// 使用场景1 计算数组中所有值的总和
+var numbers = [10, 20, 30];
+var sum = 0;
+var sumValue = numbers.reduce(function(sum2,number2){
+	return sum2 + number2;
+}, 0); // sum2初始值为0
+console.log(sumValue);
+// 使用场景2：将数组中对象的某个属性抽离到另外一个数组中
+var primaryColors = [
+   {color:"red"},
+   {color:"yellow"},
+   {color:"blue"}
+ ];
+ var colors = primaryColors.reduce(function(previous, primaryColor){
+	 previous.push(primaryColor.color);
+	 return previous;
+ },[]);
+ console.log(colors); // ['red', 'yellow', 'blue']
+```
+35. this指向
+- 函数执行时首先看函数名前面是否有“.”，有的话，“.”前面是谁，this就是谁；没有的话this就是window
+- 自执行函数(IIFE)中的this永远是window
+- 给元素的某一个事件绑定方法，当事件触发的时候，执行对应的方法，方法中的this是当前的元素。
+- 在构造函数模式中，类中（函数体中）出现的this.xxx=xxx中的this是当前类的一个实例。
+- call/apply bind
+> call和apply方法的作用是一模一样的，都是用来改变方法的this关键字并且把方法执行，两者唯一的区别：call在给fn传递参数的时候，是**一个个**的传递值的，而apply不是一个个传，而是把要给fn传递的参数值统一的放在一个**数组**中进行操作；bind也是用来改变this指向的，但是和前面两者有明显区别---bind体现了预处理思想：事先把fn的this改变为我们想要的结果，并且把对应的参数值也准备好，以后要用到了，直接的执行即可。call和apply直接执行函数，而bind需要再一次调用。
+- 箭头函数没有自己的this，箭头函数的this不是调用的时候决定的，而是在定义的时候处在的对象就是它的this。箭头函数的this看外层的是否有函数，如果有，外层函数的this就是内部箭头函数的this，如果没有，则this就是window。（由于this在箭头函数中已经按照词法作用域绑定了，所以，用call()或者apply()调用箭头函数时，无法对this进行绑定，即传入的第一个参数被忽略）
