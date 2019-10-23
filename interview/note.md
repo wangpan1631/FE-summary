@@ -634,6 +634,36 @@ var primaryColors = [
  },[]);
  console.log(colors); // ['red', 'yellow', 'blue']
 ```
+* **另外ES6数组的扩展---Array.from() Array.of()**
+- Array.from()：将伪数组对象(典型的类似数组的对象有函数的arguments对象，以及大多数DOM元素集，还有字符串)或可遍历对象转换为真数组。
+```
+Array.from('abc'); // ['a', 'b', 'c']
+[...'abc']; // ['a', 'b', 'c']
+```
+- Array.of()：将一系列值转换成数组
+- 当调用 new Array( )构造器时，根据传入参数的类型与数量的不同，实际上会导致一些不同的结果， 例如：
+```
+let items = new Array(2) ;
+console.log(items.length) ; // 2
+console.log(items[0]) ; // undefined
+console.log(items[1]) ;
+
+let items = new Array(1, 2) ;
+console.log(items.length) ; // 2
+console.log(items[0]) ; // 1
+console.log(items[1]) ; // 2
+```
+- ES6引入了Array.of()方法来解决这个问题。Array.of()方法总会创建一个包含所有传入参数的数组，而不管参数的数量和类型 。
+```
+let items = Array.of(1, 2);
+console.log(items.length); // 2
+console.log(items[0]); // 1
+console.log(items[1]); // 2
+items = Array.of(2);
+console.log(items.length); // 1
+console.log(items[0]); // 2
+```
+
 35. this指向
 - 函数执行时首先看函数名前面是否有“.”，有的话，“.”前面是谁，this就是谁；没有的话this就是window
 - 自执行函数(IIFE)中的this永远是window
@@ -664,3 +694,18 @@ var primaryColors = [
 - for of 循环不仅支持数组、大多数伪数组对象，也支持字符串遍历，此外还支持 Map 和 Set 对象遍历。
 - for in循环可以遍历字符串、对象、数组，不能遍历Set/Map
 - forEach 循环不能遍历字符串、对象,可以遍历Set/Map
+
+40. 异步解决方案-Promise与Async/Await
+- Promise.all接受一个promise对象的数组，待全部完成之后，统一执行success; Promise.race接受一个包含多个promise对象的数组，只要有一个完成，就执行success
+- Async/Await错误处理---await命令后面的Promise对象，运行结果可能是rejected，所以最好把await命令放在try...catch代码块中。try...catch错误处理也比较符合我们平常编写同步代码时候处理的逻辑。
+```
+async function myFuntion () {
+  try {
+    await somethingThatReturnsPromise();
+  } catch (e) {
+    console.log(e);
+  }
+}
+```
+
+* 写博客是件挺费精力的事，特别是你有想写出一篇好博客的初衷,本文前后花了不止五六个小时，但我却常常乐此不疲！一方面是看了很多博客，自己不手动敲一遍整理一遍，就感觉没掌握一样;另一方面，分享学习心得是件很快乐的事，愿与诸君共同成长进步！如果觉得本文还不错，记得点赞关注喔！因为往往是普通人才最需要别人的鼓励和支持！

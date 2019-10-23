@@ -132,3 +132,33 @@ function yideng(){
 // 报错 yideng is not a function
 // 不同浏览器上表现不一样
 ```
+
+8. what's the output?
+```
+let person = { name: 'Lydia' };
+const members = [person];
+person = null; // 即便是给person赋一个正常的对象值，结果都是一样
+console.log(members); // 输出结果是 [{ name: "Lydia" }]
+```
+
+9. what's the value of num ?
+```
+const num = parseInt("7*6", 10); // 你是不是觉得输出 42，不，结果是输出 7
+```
+
+10. what's the output?
+```
+// counter.js
+let counter = 10;
+export default counter;
+
+// index.js
+import myCounter from "./counter";
+
+myCounter += 1;
+
+console.log(myCounter);
+// 结果输出：Error
+// An imported module is read-only: you cannot modify the imported module. Only the module that exports them can change its value. When we try to increment the value of myCounter, it throws an error: myCounter is read-only and cannot be modifed.
+
+```
