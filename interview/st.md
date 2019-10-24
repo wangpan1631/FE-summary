@@ -162,3 +162,20 @@ console.log(myCounter);
 // An imported module is read-only: you cannot modify the imported module. Only the module that exports them can change its value. When we try to increment the value of myCounter, it throws an error: myCounter is read-only and cannot be modifed.
 
 ```
+
+11. what's the output?
+```
+const name = "lily";
+age = 22;
+console.log(delete name); // false
+console.log(delete age); // true
+```
+> delete操作符删除成功的时候返回true，否则返回false，但是由var, const, let声明的变量不能使用delete删除。
+
+12. what's the output?
+```
+const person = { name: "Lydia" };
+Object.defineProperty(person, "age", { value: 21 });
+console.log(person); // { name: "Lydia", age: 21 }
+console.log(Object.keys(person)); // ["name"] Object.defineProperty添加的属性，默认情况下是不可以修改的。
+```
