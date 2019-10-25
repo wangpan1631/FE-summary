@@ -398,6 +398,7 @@ console.log('---data--', wang instanceof Person);
 
 [防抖与节流](https://www.jianshu.com/p/c8b86b09daf0 "防抖与节流")
 [JS奇淫巧技之防抖与节流](https://www.cnblogs.com/chenqf/p/7986725.html "JS奇淫巧技之防抖与节流")
+ * [debounce and throttle](https://github.com/ljianshu/Blog/issues/43 "debounce and throttle")
 
 14. JS中的继承
 
@@ -478,6 +479,7 @@ xhr.onreadystatechange = function () {
 
 26. TCP和UDP的区别
 > [面试tcp和udp的区别](https://blog.csdn.net/sifanchao/article/details/82285018 "面试tcp和udp的区别")
+> https://github.com/ljianshu/Blog/issues/61
 
 27. 浏览器存储：cookie、localStorage、sessionStorage
 > cookie, [聊聊cookie](https://segmentfault.com/a/1190000004556040 "聊聊cookie")
@@ -743,3 +745,25 @@ async function myFuntion () {
 
 42. 实现三栏布局的几种方法
 > [参考](https://github.com/ljianshu/Blog/issues/14 "参考")
+
+43. Ajax原理
+* Ajax是一种异步请求数据的web开发技术，对于改善用户的体验和页面性能很有帮助。（Ajax的目的就是提高用户体验，减少网络数据的传输量）
+* Ajax原理：与“领导委托**秘书**想找小李汇报工”类似，(领导告诉秘书把小李叫过来 -> 领导接着干别的事情 -> 秘书去叫小李 -> 秘书领小李过来 -> 秘书告诉领导小李来了 -> 小李跟领导汇报工作了)，其中核心的依赖是浏览器提供的**XMLHttpRequest**对象。它扮演的角色相当于“秘书”
+
+44. fetch
+* fetch语法简洁，更加语义化，业务逻辑更清晰；**基于标准promise实现，支持async/await**；同构方便。
+
+45. 懒加载和预加载（性能优化的点）
+* 懒加载也叫延迟加载，指的是在长网页中延迟加载图像，是一种很好的优化网页性能的方式。（懒加载主要用于长网页，加载多个图片的情况，多见电商网站场景）用户滚动到它们之前，可视区域外的图像不会加载。
+* 懒加载的好处：提升用户体验；减少无效资源的加载；防止并发加载的资源过多会阻塞js的加载
+* 懒加载的原理：首先将页面上的图片的src属性设为空字符串，而图片的真实路径则设置在data-original属性中，当页面滚动的时候监听scroll事件，在scroll事件的回调中，判断我们的懒加载的图片是否进入可视区域，如果图片在可视区域将图片的src属性设置为data-original的值，这样就可以实现延迟加载。
+
+* 预加载：简单来说是将所有所需的资源提前请求加载到本地，这样后面在需要到时就直接从缓存中获取资源。(也像是针对图片加载的)
+* 为什么要用预加载：在网页全部加载之前，对一些主要内容进行加载，以提供给用户更好的体验，减少等待的时间。否则，如果一个页面的内容过于庞大，没有使用预加载技术的页面就会长时间的展现为一片空白，直到所有内容加载完毕。
+* 实现预加载的方法：
+```
+<img src="http://pic12.jpg" style="display:none" />
+or use PreloadJS库
+```
+
+**懒加载和预加载的对比：两者都是提高页面性能有效的方法，主要区别是一个是提前加载，一个是延迟甚至不加载。懒加载对服务器前端有一定的缓解压力作用，预加载则会增加服务器前端压力**
