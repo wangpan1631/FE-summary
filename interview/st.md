@@ -194,3 +194,17 @@ console.log(num1); // 10
 console.log(num2); // 10
 ```
 > The unary operator ++ first returns the value of the operand, then increments the value of the operand. The value of num1 is 10, since the increaseNumber function first returns the value of num, which is 10, and only increments the value of num afterwards; num2 is 10, since we passed num1 to the increasePassedNumber. number is equal to 10(the value of num1. Again, the unary operator ++ first returns the value of the operand, then increments the value of the operand. The value of number is 10, so num2 is equal to 10.
+
+14. what's the output?
+```
+// index.js
+console.log('running index.js');
+import { sum } from './sum.js';
+console.log(sum(1, 2));
+
+// sum.js
+console.log('running sum.js');
+export const sum = (a, b) => a + b;
+```
+> 输出结果是running sum.js  running index.js  3
+> 所有的import模块是提前解析的，这意味着import模块会提前执行，在CommonJS里require()是不一样的，require是同步执行的，如果这道题改成require输出结果是running index.js   running sum.js   3
