@@ -30,3 +30,7 @@
 [19秋社招面试总结](https://mp.weixin.qq.com/s/UiX8dvAsP7r0nHb-XDmdHA "19秋社招面试总结")
 
 [JS面试重点](https://mp.weixin.qq.com/s/b2Wh_oRlUEb-dyhMtrEQIQ "JS面试重点")
+
+[面试总结 看完弄懂](https://juejin.im/post/5b94d8965188255c5a0cdc02#heading-50 "面试总结 看完弄懂")
+
+[面试题汇总](https://segmentfault.com/a/1190000017137059 "面试题汇总")
