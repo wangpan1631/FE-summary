@@ -208,3 +208,54 @@ export const sum = (a, b) => a + b;
 ```
 > 输出结果是running sum.js  running index.js  3
 > 所有的import模块是提前解析的，这意味着import模块会提前执行，在CommonJS里require()是不一样的，require是同步执行的，如果这道题改成require输出结果是running index.js   running sum.js   3
+
+15. what's the output?
+```
+function addToList(item, list){
+    return list.push(item);
+}
+const result = addToList('apple', ['banana']);
+console.log(result);  // 2
+```
+* push()方法返回数组的长度, 会修改原来数组。
+
+16. what's the output?
+```
+const add = () => {
+  const cache = {};
+  return num => {
+    if (num in cache) {
+      return `From cache! ${cache[num]}`;
+    } else {
+      const result = num + 10;
+      cache[num] = result;
+      return `Calculated! ${result}`;
+    }
+  };
+};
+
+const addFunction = add();
+console.log(addFunction(10)); // Calculated! 20
+console.log(addFunction(10)); // From cache! 20
+console.log(addFunction(5 * 2)); // From cache! 20
+```
+* 这道题里面的num很容易被迷惑，对象的key可以是字符串，可以是数字
+
+17. what's the output?
+```
+var status = "😎"
+
+setTimeout(() => {
+  const status = "😍"
+
+  const data = {
+    status: "🥑",
+    getStatus() {
+      return this.status
+    }
+  }
+
+  console.log(data.getStatus()) // "🥑" 这里的this指data
+  console.log(data.getStatus.call(this)) // "😎" 这里的this指window 
+}, 0)
+```
