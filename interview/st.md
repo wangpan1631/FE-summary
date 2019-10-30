@@ -259,3 +259,18 @@ setTimeout(() => {
   console.log(data.getStatus.call(this)) // "😎" 这里的this指window 
 }, 0)
 ```
+
+18. what's the output?
+```
+function checkAge(age) {
+  if (age < 18) {
+    const message = "Sorry, you're too young."
+  } else {
+    const message = "Yay! You're old enough!"
+  }
+
+  return message
+}
+
+console.log(checkAge(21)) // ReferenceError const {} 块级作用域，return message 没有声明
+```
