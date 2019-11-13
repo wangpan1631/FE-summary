@@ -274,3 +274,22 @@ function checkAge(age) {
 
 console.log(checkAge(21)) // ReferenceError const {} 块级作用域，return message 没有声明
 ```
+
+19. what's the output?
+```
+function getItems(fruitList, ...args, favoriteFruit) {
+  return [...fruitList, ...args, favoriteFruit]
+}
+
+getItems(["banana", "apple"], "pear", "orange") // Uncaught SyntaxError: Rest parameter must be last formal parameter
+```
+
+20. what's the output?
+```
+let name = 'Lydia';
+function getName(){
+  console.log(name);
+  let name = 'Sarah';
+}
+getName(); // ReferenceError: Cannot access 'name' before initialization
+```
