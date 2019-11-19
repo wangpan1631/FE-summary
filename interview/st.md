@@ -293,3 +293,13 @@ function getName(){
 }
 getName(); // ReferenceError: Cannot access 'name' before initialization
 ```
+21. what will happen?
+```
+let config = {
+  alert: setInterval(() => {
+    console.log('Alert');
+  }, 1000)
+};
+config = null
+// The setInterval callback will still be called every second
+```
