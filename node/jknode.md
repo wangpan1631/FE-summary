@@ -64,4 +64,29 @@ class GeekTime extends EventEmitter {
 - 要了解一个框架，最好的方法是：了解它的关键功能；推导出它要解决的问题是什么；
 - 强大的路由系统，一个请求包进来，进到服务器 ，服务器根据请求包的内容去分发(在后台，路由就是根据不同的路径执行不同的逻辑)
 
-* 由于express洋葱模型中间件的不完善，社区就推出了koa(为了弥补express的缺陷而诞生的)
+* koa
+- 由于express洋葱模型中间件的不完善，社区就推出了koa(为了弥补express的缺陷而诞生的)
+- 核心功能，比express更极致的request/response简化
+```
+ ctx.status = 200;
+ ctx.body = 'hello world;
+ ```
+ - 使用async function实现的中间件，有“暂停执行”的能力，在异步的情况下也符合洋葱模型。
+ - 精简内核，所有额外功能都移到中间件里实现。
+
+ * Express vs Koa
+ - express门槛更低，koa更强大优雅。
+ - express封装更多东西，开发更快速，koa可定制性更高。
+ - express适合小型应用，koa更适合大型应用。
+
+ * RPC通信
+ - Remote Procedure Call(远程过程调用)
+ - 和Ajax有什么相同点？都是两个计算机之间的网络通信；需要双方约定一个数据格式；
+ * RPC VS Ajax
+ - Ajax是浏览器与服务器之间通信，RPC是服务器与服务器之间通信；
+ - Ajax使用DNS作为寻址服务，而RPC主要是内网里面互相请求，用DNS不划算
+ - 应用层协议一般不使用http,而是使用二进制协议来取代http
+ - 使用TCP或者UDP
+
+ * TCP通信方式：单工通信、半双工通信(同一时间内只有一端能往另外一端发送通信)、全双工通信
+ * 二进制协议：更小的数据包体积、更快的编解码速率（二进制0101更适宜计算机理解，json，key-value更适合人类理解）
