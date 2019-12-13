@@ -12,14 +12,55 @@
     // 手写深拷贝
     // 手写bind
 
-    const pro = () => {
-        return new Promise((res, rej) => {
+    // const pro = () => {
+    //     return new Promise((res, rej) => {
 
-        })
+    //     })
+    // }
+    // pro.then().catch()
+    // promise.all  所有的请求都完成的时候，统一执行success
+    // promise.race  只要有一个请求完成，就执行success
+
+    // 深拷贝
+    function checkedType(target) {
+        return Object.prototype.toString.call(target).slice(8, -1)
     }
-    pro.then().catch()
-    promise.all  所有的请求都完成的时候，统一执行success
-    promise.race  只要有一个请求完成，就执行success
+    // 实现深度克隆---对象/数组
+    function deepClone(target) {
+        // 判断拷贝的数据类型
+        // 初始化变量result 成为最终克隆的数据
+        let result,
+            targetType = checkedType(target);
+        if (targetType === 'Object') {
+            result = {};
+        } else if (targetType === 'Array') {
+            result = [];
+        } else {
+            return target;
+        }
+        // 遍历目标数据
+        for (let i in target) {
+            let value = target[i];
+            if (checkedType(value) === 'Object' || checkedType(value) === 'Array') {
+                // 对象/数组里嵌套了对象/数组
+                // 继续遍历获取到value值
+                result[i] = deepClone(value);
+            } else {
+                result[i] = value;
+            }
+        }
+        return result;
+    }
+    let testObj = {
+        name: 'huagu',
+        age: 22,
+        like: {
+            fruit: {
+                apple: true
+            }
+        }
+    };
+   
     </script>
 </body>
 </html>

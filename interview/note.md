@@ -617,7 +617,7 @@ user = users.find(i => {
 })
 console.log(user); // {name: 'Alex', id:2}
 ```
-- every&some: every-数组中是否每个元素都满足指定的条件；some-数组中是否有算是满足指定的条件
+- every&some: every-数组中是否每个元素都满足指定的条件；some-数组中是否有元素满足指定的条件
 ```
 var computers = [
  {name:"Apple",ram:16},
