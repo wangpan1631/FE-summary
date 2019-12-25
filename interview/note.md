@@ -342,8 +342,8 @@ var obj2 = {...obj1};
 
 [ljianshu 深拷贝与浅拷贝](https://github.com/ljianshu/Blog/issues/5 "ljianshu 深拷贝与浅拷贝")
 
-11. JS new对象的四个过程
-* 先理清楚 new 关键字调用函数都的具体过程，那么写出来就很清楚了
+11. JS new对象的四个过程(new实现原理)
+* 先理清楚 new 关键字调用函数的具体过程，那么写出来就很清楚了
 * 首先创建一个空的对象，空对象的__proto__属性指向构造函数的原型对象
 * 把上面创建的空对象赋值构造函数内部的this，用构造函数内部的方法修改空对象
 * 如果构造函数返回一个非基本类型的值，则返回这个值，否则上面创建的对象
@@ -369,7 +369,7 @@ obj.__proto__ = Person.prototype;
 4. 判断Person的返回值类型，如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象。
 (**注意：若构造函数中返回this或返回值是基本类型（number、string、boolean、null、undefined）的值，则返回新实例对象；若返回值是引用类型的值，则实际返回值为这个引用类型。**)
 ```
-if (typeof(result) == 'object') {
+if (result && (typeof(result) == 'object' || typeof(result) == 'function')) {
   person = result;
 } else {
   person = obj;

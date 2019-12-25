@@ -5,8 +5,7 @@
 
 **企业面试**
 [百度面试题](https://mp.weixin.qq.com/s/Z7Msx-GY7RqWB6nNX99y5g "百度面试题")
-
-0613 本来想整理的，但是发现浪费时间，现在有道云笔记看就行，后面有时间了再整理吧。
+[参考答案](https://zhuanlan.zhihu.com/p/50506035 "参考答案")
 
 [20道大厂面试题](https://juejin.im/post/5d124a12f265da1b9163a28d "20道大厂面试题")
 
