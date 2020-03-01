@@ -10,6 +10,7 @@
 **盒模型分为：IE盒模型和W3C标准盒模型**
 二者区别是
 * IE盒模型，属性width height包含border和padding，指的是content+padding+border
+* **IE盒模型，border 和 padding不会影响我们给盒子宽度；而标准模型，border 和 padding会影响我们给盒子的宽度，盒子真正显示的宽度会变大**
 
 ![alt text](../imgs/ie-model.png "ie model")
 

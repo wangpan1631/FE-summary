@@ -19,7 +19,7 @@
 - plugins 插件
 
 * 4.0webpack0配置包含entry output两个配置，其它都没有配置
-
+[npm and nvm](https://www.jianshu.com/p/401b02f4fb30 "npm and nvm")
 * 环境配置，可以通过nvm安装(先安装nvm)，nvm install v10.15.3(安装Node)
 * 创建空目录和package.json
 - mkdir my-project
@@ -148,4 +148,155 @@ module.exports = {
 ```
 * 安装依赖，npm i @babel/core @babel/preset-env babel-loader -D
 
-* 看到15小节解析ES6和React JSX处
+* 解析CSS
+* css-loader 用于加载.css文件，并且转换成commonjs对象
+* style-loader 将样式通过<style>标签插入到head中
+* less-loader 将less转换成css
+
+* 资源解析：解析图片
+* file-loader 用于处理文件(图片、字体)
+* url-loader 也可以处理图片和字体，可以设置较小资源自动base64
+
+* webpack中的文件监听(文件监听是在发现源码发生变化时，自动重新构建出新的输出文件)
+* webpack开启监听模式，有两种方式：
+- 启动webpack命令时，带上--watch参数(唯一缺陷：每次需要手动刷新浏览器)
+- 在配置webpack.config.js中设置watch:true
+
+* 文件监听的原理分析：轮询判断文件的最后编辑时间是否变化，某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等aggregateTimeout
+
+* webpack中的热更新及原理分析(webpack-dev-server)
+- WDS 不刷新浏览器
+- WDS 不输出文件，而是放在内存中
+- 使用HotModuleReplacementPlugin插件
+package.json里面配置
+```
+{
+    "dev": "webpack-dev-server --open"
+}
+```
+* 热更新：使用webpack-dev-middleware
+- WDM将webpack输出的文件传输给服务器，适用于灵活的定制场景
+
+* 什么是文件指纹？打包后输出的文件经的后缀
+* 常见的文件指纹和文件指纹如何生产的
+- Hash: 和整个项目的构建相关，只要项目文件有修改，整个项目构建的hash值就会更改。
+- Chunkhash: 和webpack打包的chunk有关，不同的entry会生成不同的chunkhash值。
+- Contenthash: 根据文件内容来定义hash, 文件内容不变，则contenthash不变。
+
+1. JS的文件指纹设置，设置output的filename，使用[chunkhash]
+```
+module.exports = {
+    entry: {
+        app: './src/app.js',
+        search: './src/search.js'
+    },
+    output: {
+        filename: '[name][chunkhash:8].js',
+        path: __dirname + '/dist'
+    }
+}
+```
+2. 设置MiniCssExtractPlugin的filename, 使用[contenthash]
+```
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        filename: '[name][chunkhash:8].js',
+        path: __dirname + '/dist'
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: `[name][contenthash:8].css`
+        })
+    ]
+};
+```
+3. 图片的文件指纹设置，设置file-loader的name, 使用[hash]。以下是占位符名称和对应的含义
+- [ext] ------ 资源后缀名
+- [name] ------ 文件名称
+- [path] ------ 文件的相对路径
+- [folder] ------ 文件所在的文件夹
+- [contenthash] ------ 文件的内容hash，默认是md5生产
+- [hash] ------ 文件内容的Hash, 默认是md5生成
+- [emoji] ------ 一个随机的指代文件内容的emoj
+```
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(.png|svg|jpg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: 'img/[name][hash:8].[ext]'
+                    }
+                }]
+            }
+        ]
+    }
+};
+```
+
+* HTML、CSS和JavaScript代码压缩
+- JS文件的压缩，webpack内置了uglifyjs-webpack-plugin(默认打包的文件，js就是压缩过的)，如果需要额为的配置，可以单独安装uglifyjs-webpack-plugin
+- CSS文件的压缩，使用optimize-css-assets-webpack-plugin，同时使用cssnano
+```
+module.exports = {
+    entry: './src/app.js',
+    output: {
+        filename: '[name][chunkhash:8].js',
+        path: __dirname + '/dist'
+    },
+    plugins: [
+        new OptimizeCSSAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano')
+        })
+    ]
+}
+```
+- html文件的压缩，需改html-webpack-plugin，设置压缩参数
+```
+module.exports = {
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/search.html'),
+            filename: 'search.html',
+            chunks: ['search'],
+            inject: true,
+            minify: {
+                html5: true,
+                collapseWhitespace: true,
+                preserveLineBreaks: false,
+                minifyCSS: true,
+                minifyJS: true,
+                removeComments: false
+            }
+        })
+    ]
+}
+```
+
+**webpack进阶用法**
+* 自动清理构建目录产物，避免构建前每次都需要手动删除dist，使用clean-webpack-plugin, 默认会删除output指定的输出目录
+```
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        filename: '[name][chunkhash:8].js',
+        path: __dirname + '/dist'
+    },
+    plugins: [
+        new CleanWebpackPlugin()
+    ]
+}
+```
+
+* CSS3的属性为什么需要前缀？因为市场上有多种浏览器内核，同样的样式，不同的浏览器渲染出来会有差异，考虑到兼容性问题，需要添加前缀(PostCSS插件autoprefixer自动补齐css3前缀)
+
+
