@@ -156,6 +156,7 @@ module.exports = {
 * 资源解析：解析图片
 * file-loader 用于处理文件(图片、字体)
 * url-loader 也可以处理图片和字体，可以设置较小资源自动base64
+**注意：解析图片时候，使用上面两个loader，需要配置options(name、publicPath)，图片才能正常显示**
 
 * webpack中的文件监听(文件监听是在发现源码发生变化时，自动重新构建出新的输出文件)
 * webpack开启监听模式，有两种方式：
@@ -164,16 +165,30 @@ module.exports = {
 
 * 文件监听的原理分析：轮询判断文件的最后编辑时间是否变化，某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等aggregateTimeout
 
-* webpack中的热更新及原理分析(webpack-dev-server)
+* webpack中的热更新及原理分析(webpack-dev-server)，只有开发环境需要热更新。
 - WDS 不刷新浏览器
 - WDS 不输出文件，而是放在内存中
-- 使用HotModuleReplacementPlugin插件
-package.json里面配置
+- 需要配合使用HotModuleReplacementPlugin插件
+1. package.json里面配置
 ```
 {
     "dev": "webpack-dev-server --open"
 }
 ```
+2. webpack.dev.js里配置
+```
+const webpack = require('webpack');
+module.exports = {
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+    devServer: {
+        contenBase: '/dist',
+        hot: true
+    }
+}
+```
+
 * 热更新：使用webpack-dev-middleware
 - WDM将webpack输出的文件传输给服务器，适用于灵活的定制场景
 
@@ -181,7 +196,7 @@ package.json里面配置
 * 常见的文件指纹和文件指纹如何生产的
 - Hash: 和整个项目的构建相关，只要项目文件有修改，整个项目构建的hash值就会更改。
 - Chunkhash: 和webpack打包的chunk有关，不同的entry会生成不同的chunkhash值。
-- Contenthash: 根据文件内容来定义hash, 文件内容不变，则contenthash不变。
+- Contenthash: 根据文件内容来定义hash, 文件内容不变，则contenthash不变。（通常用于CSS文件）
 
 1. JS的文件指纹设置，设置output的filename，使用[chunkhash]
 ```
@@ -199,7 +214,10 @@ module.exports = {
 2. 设置MiniCssExtractPlugin的filename, 使用[contenthash]
 ```
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        app: './src/app.js',
+        search: './src/search.js'
+    },
     output: {
         filename: '[name][chunkhash:8].js',
         path: __dirname + '/dist'
@@ -297,6 +315,57 @@ module.exports = {
 }
 ```
 
-* CSS3的属性为什么需要前缀？因为市场上有多种浏览器内核，同样的样式，不同的浏览器渲染出来会有差异，考虑到兼容性问题，需要添加前缀(PostCSS插件autoprefixer自动补齐css3前缀)
+* CSS3的属性为什么需要前缀？因为浏览器标准没有统一，市场上有四种浏览器内核，同样的样式，不同的浏览器渲染出来会有差异，考虑到兼容性问题，需要添加前缀(PostCSS插件和autoprefixer自动补齐css3前缀)
+[postcss-loader配合autoprefixer解决CSS3兼容问题](https://www.cnblogs.com/hellowoeld/p/10571792.html "postcss-loader配合autoprefixer解决CSS3兼容问题")
 
+* 第24小节移动端CSS px自动转换成rem(参考：[webpack之css自动转rem](https://blog.csdn.net/scorpio_h/article/details/92754859 "webpack之css自动转rem"))
+* W3C对rem的定义：font-size of the root element
+* rem和px的对比：rem是相对单位；px是绝对单位
+
+1. **使用px2rem-loader**
+2. 页面渲染时计算根元素的font-size值，可以使用**手淘的lib-flexible库**([手淘lib-flexible](https://github.com/amfe/lib-flexible) "手淘lib-flexible")
+```
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader',
+                    {
+                        loader: 'px2rem-loader',
+                        options: {
+                            remUnit: 75,
+                            remPrecision: 8
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+26. 多页面应用打包通用方案。
+* 每个页面对应一个entry, 一个html-webpack-plugin，缺点：每次新增或删除页面需要改webpack配置
+```
+module.exports = {
+    entry: {
+        index: './src/index.js',
+        search: './src/search.js'
+    }
+}
+```
+* 多页面打包通用方案，动态获取entry和设置html-webpack-plugin数量，利用glob.sync
+* entry: glob.sync(path.join(__dirname, './src/*/index.js'))
+```
+module.exports = {
+    entry: {
+        index: './src/index/index.js',
+        search: './src/search/index.js'
+    }
+}
+```
 
