@@ -5,7 +5,20 @@
  * 数据更新时触发消息给订阅者，实现数据绑定功能。
  */
 
-// 实现mvvm比较复杂，还没整理好代码
+// 简单实现双向数据绑定mvvm
+<input type="text" id="name" value="wangpan" />
+let input = document.getElementById('name');
+let data = {};
+Object.defineProperty(data, 'text', {
+  set (value) {
+    input.value = value;
+    this.value = value;
+  }
+});
+input.onchange = function (e) {
+  data.text = e.target.value;
+}
+
 
 // 实现Storage，使得该对象为单例，并对localStorage进行封装设置值setItem(key, value)和getItem(key)
 var instance = null;

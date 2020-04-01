@@ -506,6 +506,7 @@ xhr.onreadystatechange = function () {
 > 基本数据类型，undefined null boolean number string symbol; **基本数据类型的值是不可改变的；**原始数据类型直接**存储在栈(stack)中**的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储。
 > 引用数据类型，**值是可变的；**引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定,如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。**故引用数据类型同时保存在栈内存和堆内存**
 > 检测数据类型常用方法：Object.prototype.toString.call()
+> 检测数据类型的终极方法：Object.prototype.toString.call(target).slice(8, -1)
 
 31. 数据类型转换
 > [1,2,3].toString() --> '1,2,3' 数组转成字符串
@@ -778,10 +779,43 @@ opaciy:0不会让元素从渲染树消失，渲染元素继续占据空间，只
 
 47. var,let和const区别，及实现原理是什么？
 * var声明的变量可以修改，存在变量提升和初始化，而let和const只完成了声明，没有初始化那一步，此时如果在此作用域提前访问，则报错xx is not defined，这就是暂时性死区的由来。
-* var的话会直接在栈内存里预分配内存空间，然后等到实际语句执行的时候，再存储对应的变量，如果传的是引用类型，那么会在堆内存里开辟一个内存空间存储实际内存，栈内存会存储一个指向堆内存的指针。  let的话，是不会在栈内存里预分配内存空间，而且在栈内存分配变量时，做一个检查，如果已经有相同变量名存在就会报错。  const的话，也不会预分配内存空间，在栈内存分配变量时也会做同样的检查。不过const存储的变量时不可修改的。对于基本类型来说无法修改定义的值，对于引用类型来说你无法修改栈内存里分配的指针，但是你可以修改指针指向的对象里面的属性。
+* var的话会直接在栈内存里预分配内存空间，然后等到实际语句执行的时候，再存储对应的变量，如果传的是引用类型，那么会在堆内存里开辟一个内存空间存储实际内存，栈内存会存储一个指向堆内存的指针。  let的话，是不会在栈内存里预分配内存空间，而且在栈内存分配变量时，做一个检查，如果已经有相同变量名存在就会报错。  const的话，也不会预分配内存空间，在栈内存分配变量时也会做同样的检查。不过const存储的变量时不可修改的。**对于基本类型来说无法修改定义的值，对于引用类型来说你无法修改栈内存里分配的指针，但是你可以修改指针指向的对象里面的属性**。
 * var声明的变量是挂载到window上面的，而let const声明的不是挂载在window上面的, 而是存在一个块级作用域内。
 * let const声明的变量的作用域是块级的。var声明的不是
 
 48. js中的map some every forEach用法总结：https://blog.csdn.net/weixin_36934930/article/details/81061063
 
 49. [JS中slice,splice,split的区别](https://www.cnblogs.com/mangoWeb/p/3517801.html "sllice/splice/split")
+
+50. 写出下列代码的执行结果
+```
+async function async1() {
+   console.log('async1 start')
+   await async2()
+   console.log('async1 end')
+}
+async function async2() {
+   console.log('async2')
+}
+console.log('script start')
+setTimeout(function () {
+   console.log('settimeout')
+})
+async1()
+new Promise(function (resolve) {
+   console.log('promise1')
+   resolve()
+}).then(function () {
+   console.log('promise2')
+})
+console.log('script end')
+```
+* 结果：script start --> async1 start --> async2 --> promise1 --> script end --> async1 end --> promise2 --> settimeout
+* [详解](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7 "详解")
+
+51. 数据类型的判断
+- typeof 返回一个表示数据类型的字符串。返回结果包括：number、boolean、string、symbol、object、undefined、function等7种数据类型，但不能判断null、array等。
+- instanceof 是用来判断A是否为B的实例，表达式为：A instanceof B，如果A是B的实例，则返回true，否则返回false。
+instanceof运算符用来测试一个对象在其原型链中是否存在一个构造函数的prototype属性，但它不能检测null和undefined
+- constructor作用和instanceof非常相似。但constructor检测Object与instanceof不一样，还可以处理基本数据类型的检测。
+- **Object.prototype.toString.call()是最准确常用的方法。**
