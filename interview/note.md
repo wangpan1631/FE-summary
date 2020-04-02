@@ -819,3 +819,11 @@ console.log('script end')
 instanceof运算符用来测试一个对象在其原型链中是否存在一个构造函数的prototype属性，但它不能检测null和undefined
 - constructor作用和instanceof非常相似。但constructor检测Object与instanceof不一样，还可以处理基本数据类型的检测。
 - **Object.prototype.toString.call()是最准确常用的方法。**
+
+52. osi模型---七层结构：物理层、数据链路层、网络层、会话层、表示层、应用层；tcp ucp属于传输层，http属于应用层。
+
+53. babel原理---ES6、7代码输入 -> babylon进行解析 -> 得到AST（抽象语法树）-> plugin用babel-traverse对AST树进行遍历转译 -> 得到新的AST树 -> 用babel-generator通过AST树生产ES5代码
+
+54. promise---Promise对象的错误具有冒泡性质，会一直向后传递，直到被捕获为止，也即是说，错误总会被下一个catche语句捕获。
+
+55. 前后端路由差别---后端每次路由请求都是重新访问服务器；前端路由实际上只是JS根据URL来操作DOM元素，根据每个页面需要的去服务器请求数据，返回数据后和模板进行组合。
