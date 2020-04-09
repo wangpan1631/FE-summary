@@ -18,7 +18,7 @@ class Chameleon {
     static colorChange(newColor) {
         this.newColor = newColor;
     }
-    consturctor({ newColor = 'green' } = {}) {
+    constructor({ newColor = 'green' } = {}) {
         this.newColor = newColor;
     })
 }
