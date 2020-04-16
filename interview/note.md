@@ -844,3 +844,11 @@ instanceof运算符用来测试一个对象在其原型链中是否存在一个�
 
 57. Number.isNaN() 方法确定传递的值是否为 NaN，并且检查其类型是否为 Number。它是原来的全局 isNaN() 的更稳妥的版本。(isNaN---当我们向isNaN传递一个参数，它的本意是通过Number()方法尝试将这参数转换成Number类型，如果成功返回false，如果失败返回true，所以isNaN只是判断传入的参数是否能转换成数字，并不是严格的判断是否等于NaN。Number.isNaN判断传入的参数是否严格的等于NaN也就是===。二者最大的区别是，Number.isNaN不存在类型转换的行为。Number.isNaN方法，只是严格的判断传入的参数是否全等于NaN(eg: '测试' === NaN，输出false))。
 - [isNaN()和Number.isNaN()的区别](https://www.cnblogs.com/Mrrabbit/p/10990218.html "isNaN()和Number.isNaN()的区别")
+
+58. ES6模块与CommonJS模块有什么区别？
+- ES6 Module和CommonJS模块的区别：CommonJS是对模块的浅拷贝，ES6 Module是对模块的引用,即ES6 Module只存只读，不能改变其值，具体点就是指针指向不能变，类似const
+import的接口是read-only（只读状态），不能修改其变量值。 即不能修改其变量的指针指向，但可以改变变量内部指针指向,可以对commonJS对重新赋值（改变指针指向），但是对ES6 Module赋值会编译报错。
+- ES6 Module和CommonJS模块的共同点：CommonJS和ES6 Module都可以对引入的对象进行赋值，即对对象内部属性的值进行改变。
+- [参考](https://es6.ruanyifeng.com/#docs/module-loader#ES6-%E6%A8%A1%E5%9D%97%E4%B8%8E-CommonJS-%E6%A8%A1%E5%9D%97%E7%9A%84%E5%B7%AE%E5%BC%82 "参考")
+
+59. 函数柯里化---在一个函数中，首先填充几个参数，然后再返回一个新的函数的技术，成为函数的柯里化。

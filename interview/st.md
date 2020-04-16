@@ -318,3 +318,15 @@ console.log(b.x); // {n: 2}
 
 24. "a" + + "b"结果是什么？
 * 结果是："aNaN"。后边的"+"将作为一元操作符，如果操作数是字符串，将调用Number方法将该操作数转为数值，如果操作数无法转为数值，则为NaN。
+
+25. 下面代码输出结果是什么？
+```
+var x = 1;
+var output = (function(){
+    delete x;
+    return x;
+})();
+
+console.log(output);
+```
+- 结果是1，delete操作符是将对象的属性删除的操作，但这里的x并不是对象的属性，delete操作符并不起作用。

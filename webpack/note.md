@@ -193,7 +193,7 @@ module.exports = {
 - WDM将webpack输出的文件传输给服务器，适用于灵活的定制场景
 
 * 什么是文件指纹？打包后输出的文件经的后缀
-* 常见的文件指纹和文件指纹如何生产的
+* 常见的文件指纹和文件指纹如何生成的？
 - Hash: 和整个项目的构建相关，只要项目文件有修改，整个项目构建的hash值就会更改。
 - Chunkhash: 和webpack打包的chunk有关，不同的entry会生成不同的chunkhash值。
 - Contenthash: 根据文件内容来定义hash, 文件内容不变，则contenthash不变。（通常用于CSS文件）
@@ -234,7 +234,7 @@ module.exports = {
 - [name] ------ 文件名称
 - [path] ------ 文件的相对路径
 - [folder] ------ 文件所在的文件夹
-- [contenthash] ------ 文件的内容hash，默认是md5生产
+- [contenthash] ------ 文件的内容hash，默认是md5生成
 - [hash] ------ 文件内容的Hash, 默认是md5生成
 - [emoji] ------ 一个随机的指代文件内容的emoj
 ```
@@ -261,7 +261,7 @@ module.exports = {
 ```
 
 * HTML、CSS和JavaScript代码压缩
-- JS文件的压缩，webpack内置了uglifyjs-webpack-plugin(默认打包的文件，js就是压缩过的)，如果需要额为的配置，可以单独安装uglifyjs-webpack-plugin
+- JS文件的压缩，webpack内置了uglifyjs-webpack-plugin(默认打包的文件，js就是压缩过的)，如果需要额外的配置，可以单独安装uglifyjs-webpack-plugin
 - CSS文件的压缩，使用optimize-css-assets-webpack-plugin，同时使用cssnano
 ```
 module.exports = {
