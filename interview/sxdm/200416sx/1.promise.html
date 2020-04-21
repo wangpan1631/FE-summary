@@ -8,6 +8,14 @@
 </head>
 <body>
     <script>
+        // about Promise
+        // Promise是一个构造函数，需要new它，然后得到一个实例。
+        // Promise是一个状态机，分别是pending(等待态)、fulfilled(成功态)、rejected(失败态)
+        // then()方法是成功的回调，catch()是失败的回调，每一个then方法都会返回一个新的Promise实例(不是原来那个)
+        // Promise.all()能将多个Promise实例包装成一个Promise实例，所有的小promise实例的状态都为成功态，则大Promise为
+        // 成功态，只要有一个为失败态，大Promise就是失败态。
+        // Promise.race()，也可以将多个Promise实例包装成一个Promise实例。与all不同的是，大Promise的状态由第一个转变状态的小Promise的状态决定。
+
         // myPromise
         function Promise(executor){ //executor是一个执行器（函数）
             let _this = this // 先缓存this以免后面指针混乱

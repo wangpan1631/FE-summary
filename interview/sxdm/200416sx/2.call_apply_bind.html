@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面试手写代码</title>
+</head>
+<body>
+    <script>
+       // https://github.com/frontend9/fe9-interview/issues/30
+       // https://juejin.im/post/5d124a12f265da1b9163a28d
+       // call apply bind的原理和区别
+       // call接收的是用逗号隔开的参数，并会立即执行
+       // apply接收的是数组，并会立即执行
+       // bind接收的是用逗号隔开的参数，但是不会立即执行，而是返回一个新的函数。
+    
+        Function.prototype.call(context, ...args)
+        {
+            context = context || window;
+            context.fn = this;
+            var result = context.fn(...args);
+            delete context.fn;
+            return result;
+        }
+
+        Function.prototype.apply(context, args)
+        {
+            context = context || window;
+            context.fn = this;
+            var result = context.fn(...args);
+            delete context.fn;
+            return result;
+        }
+
+        Function.prototype.bind = function (context, ...rest) {
+            var self = this;
+            return function F(...args) {
+                return self.apply(context, rest.concat(args));
+            }
+        }
+
+        // 下面代码输出什么？
+        function add(c, d) {  
+            console.log(this.a + this.b + c + d);
+        }
+        var o = {a: 1, b: 2};
+        var bindAdd = add.bind(o, 3);
+        new bindAdd(4); // 如果前面不加new，输出10；加了new输出NaN，因为bind返回的函数作为构造函数的时候，bind时指定的this值会失效，但传入的参数依然生效。
+
+    </script>
+</body>
+</html>
