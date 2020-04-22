@@ -265,6 +265,17 @@ module.exports = {
         filename: '[name][chunkhash:8].js',
         path: __dirname + '/dist'
     },
+    modules: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    // 'style-loader', // 作用是把样式传入到head里面，而MiniCssExtractPlugin作用是把css抽取成一个独立的文件，所以两者的作用是互斥的，用了MiniCssExtractPlugin，就不能使用style-loader了
+                    'css-loader'
+                ]
+            }
+        ]
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: `[name][contenthash:8].css`
