@@ -152,27 +152,68 @@ module.exports = {
 * css-loader 用于加载.css文件，并且转换成commonjs对象
 * style-loader 将样式通过<style>标签插入到head中
 * less-loader 将less转换成css
+* **注意：webpack里面loader是链式调用，是从右往左执行的，如下要解析less文件的loader配置**
+```
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.join(__dirname, 'dist')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader'
+                ]
+            }
+        ]
+    }
+}
+```
 
 * 资源解析：解析图片
 * file-loader 用于处理文件(图片、字体)
-* url-loader 也可以处理图片和字体，可以设置较小资源自动base64
+* url-loader 也可以处理图片和字体，可以设置较小资源自动base64(注：base64需要设置阈值，base64可以减少http请求，但是会是css文件体积变大，需要在两者之间做个权衡)
 **注意：解析图片时候，使用上面两个loader，需要配置options(name、publicPath)，图片才能正常显示**
 
 * webpack中的文件监听(文件监听是在发现源码发生变化时，自动重新构建出新的输出文件)
 * webpack开启监听模式，有两种方式：
 - 启动webpack命令时，带上--watch参数(唯一缺陷：每次需要手动刷新浏览器)
+```
+// package.json里面配置
+{
+    "name": "hello-webpack",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "webpack",
+        "watch": "webpack --watch" // 在terminal里执行npm run watch
+    }
+}
+```
 - 在配置webpack.config.js中设置watch:true
+```
+module.exports = {
+    watch: true, // 默认false，也就是不开启
+    watchOptions: { // 只有开启监听模式，watchOptions才有意义
+        ignore: '/node_modules' // 不监听node_modules
+    }
+}
+```
 
 * 文件监听的原理分析：轮询判断文件的最后编辑时间是否变化，某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等aggregateTimeout
 
 * webpack中的热更新及原理分析(webpack-dev-server)，只有开发环境需要热更新。
 - WDS 不刷新浏览器
-- WDS 不输出文件，而是放在内存中
-- 需要配合使用HotModuleReplacementPlugin插件
+- **WDS 不输出文件，而是把打包好的文件放在内存中**
+- **需要配合使用HotModuleReplacementPlugin插件**
 1. package.json里面配置
 ```
 {
-    "dev": "webpack-dev-server --open"
+    "dev": "webpack-dev-server --open" // '--open'是在每次构建完成之后开启一个浏览器
 }
 ```
 2. webpack.dev.js里配置
@@ -192,7 +233,9 @@ module.exports = {
 * 热更新：使用webpack-dev-middleware
 - WDM将webpack输出的文件传输给服务器，适用于灵活的定制场景
 
-* 什么是文件指纹？打包后输出的文件经的后缀
+* 热更新的原理分析
+
+* 什么是文件指纹？打包后输出的文件的后缀
 * 常见的文件指纹和文件指纹如何生成的？
 - Hash: 和整个项目的构建相关，只要项目文件有修改，整个项目构建的hash值就会更改。
 - Chunkhash: 和webpack打包的chunk有关，不同的entry会生成不同的chunkhash值。
@@ -206,12 +249,12 @@ module.exports = {
         search: './src/search.js'
     },
     output: {
-        filename: '[name][chunkhash:8].js',
+        filename: '[name]_[chunkhash:8].js',
         path: __dirname + '/dist'
     }
 }
 ```
-2. 设置MiniCssExtractPlugin的filename, 使用[contenthash]
+2. css的文件指纹设置，设置MiniCssExtractPlugin的filename, 使用[contenthash]
 ```
 module.exports = {
     entry: {
