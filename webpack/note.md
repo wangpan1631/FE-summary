@@ -315,7 +315,7 @@ module.exports = {
 ```
 
 * HTML、CSS和JavaScript代码压缩
-- JS文件的压缩，webpack内置了uglifyjs-webpack-plugin(默认打包的文件，js就是压缩过的)，如果需要额外的配置，可以单独安装uglifyjs-webpack-plugin
+- JS文件的压缩，webpack内置了uglifyjs-webpack-plugin(mode设置为production,默认打包的文件js就是压缩过的)，如果需要额外的配置，可以单独安装uglifyjs-webpack-plugin
 - CSS文件的压缩，使用optimize-css-assets-webpack-plugin，同时使用cssnano
 ```
 module.exports = {
@@ -337,10 +337,10 @@ module.exports = {
 module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/search.html'),
-            filename: 'search.html',
-            chunks: ['search'],
-            inject: true,
+            template: path.join(__dirname, 'src/search.html'), // 模板所在位置
+            filename: 'search.html', // 打包输出的html文件
+            chunks: ['search'], // 指定生产的Html要使用哪些chunk
+            inject: true, // 打包输出的js、css的chunk自动注入html
             minify: {
                 html5: true,
                 collapseWhitespace: true,
@@ -354,7 +354,7 @@ module.exports = {
 }
 ```
 
-**webpack进阶用法**
+**第三章 webpack进阶用法**
 * 自动清理构建目录产物，避免构建前每次都需要手动删除dist，使用clean-webpack-plugin, 默认会删除output指定的输出目录
 ```
 module.exports = {
@@ -369,7 +369,34 @@ module.exports = {
 }
 ```
 
-* CSS3的属性为什么需要前缀？因为浏览器标准没有统一，市场上有四种浏览器内核，同样的样式，不同的浏览器渲染出来会有差异，考虑到兼容性问题，需要添加前缀(PostCSS插件和autoprefixer自动补齐css3前缀)
+* CSS3的属性为什么需要前缀？因为浏览器标准没有统一，市场上有四种浏览器内核，同样的样式，不同的浏览器渲染出来会有差异，考虑到兼容性问题，需要添加前缀(PostCSS插件和autoprefixer自动补齐css3前缀， Can I Use?上可以查询)
+* （css前置处理器是打包前进行处理，后置处理器是打包后进行处理）
+```
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [
+                                require('autoprefixer')({
+                                    browers: ["last 2 version", ">1%", "IOS 7"]
+                                })
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
 [postcss-loader配合autoprefixer解决CSS3兼容问题](https://www.cnblogs.com/hellowoeld/p/10571792.html "postcss-loader配合autoprefixer解决CSS3兼容问题")
 
 * 第24小节移动端CSS px自动转换成rem(参考：[webpack之css自动转rem](https://blog.csdn.net/scorpio_h/article/details/92754859 "webpack之css自动转rem"))
