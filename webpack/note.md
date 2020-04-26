@@ -386,6 +386,7 @@ module.exports = {
                         options: {
                             plugins: () => [
                                 require('autoprefixer')({
+                                    // ['兼容最近两个浏览器版本', '版本使用的人数比例', 'IOS 7以上的版本']
                                     browers: ["last 2 version", ">1%", "IOS 7"]
                                 })
                             ]
