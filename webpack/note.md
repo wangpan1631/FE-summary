@@ -404,8 +404,12 @@ module.exports = {
 * W3C对rem的定义：font-size of the root element
 * rem和px的对比：rem是相对单位；px是绝对单位
 
+* css 媒体查询实现响应式布局，通过给不同尺寸的设备添加不同的样式
+
 1. **使用px2rem-loader**
 2. 页面渲染时计算根元素的font-size值，可以使用**手淘的lib-flexible库**([手淘lib-flexible](https://github.com/amfe/lib-flexible) "手淘lib-flexible")
+* npm i px2rem-loader -D
+* npm i lib-flexible -S
 ```
 module.exports = {
     module: {
@@ -417,7 +421,7 @@ module.exports = {
                     'css-loader',
                     'less-loader',
                     {
-                        loader: 'px2rem-loader',
+                        loader: 'px2rem-loader', // 配置了会报错
                         options: {
                             remUnit: 75,
                             remPrecision: 8
@@ -429,6 +433,26 @@ module.exports = {
     }
 }
 ```
+
+* 静态资源内联
+* 资源内联的意义：
+- 代码层面：页面框架的初始化脚本、上报相关打点、css内联避免页面闪动
+- 请求层面：减少HTTP网络请求数，小图片或者字体内联(url-loader)
+
+* HTML和JS内联：
+- raw-loader内联html(比如，很多Html页面可能都需要大量的meta信息，我们可以把这些Meta片段抽取出来，然后内联到页面里面)
+```
+<script>${require('raw-loader!babel-loader!./meta.html')}</script>
+```
+- raw-loader内联JS
+```
+<script>${require('raw-loader!bebel-loader!../node_modules/lib-flexible')}</script>
+```
+* CSS内联
+- 方案一：借助style-loader
+- 方案二：html-inline-css-webpack-plugin
+
+
 
 26. 多页面应用打包通用方案。
 * 每个页面对应一个entry, 一个html-webpack-plugin，缺点：每次新增或删除页面需要改webpack配置
