@@ -476,3 +476,149 @@ module.exports = {
 }
 ```
 
+* source-map，开发环境使用，便于排错调试。
+```
+module.exports = {
+    entry: '',
+    output: '',
+    devtool: 'source map 类型' // eval、source-map、inline-source-map等
+}
+```
+- eval
+- source-map
+- inline-source-map
+
+* 公共资源分离
+- 基础库分离，比如做react开发，将react, react-dom基础包通过cdn引入，不打入bundle中，使用html-webpack-externals-plugin
+```
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+module.exports = {
+    plugins: [
+        new HtmlWebpackExternalsPlugin({
+            externals: [
+                {
+                    module: 'react',
+                    entry: '//11.url.cn/now/lib/15.1.0/react-with-addons.min.js?_bid=3123',
+                    global: 'React'
+                },
+                {
+                    module: 'react-dom',
+                    entry: '//11.url.cn/now/lib/15.1.0/react-dom.min.js?_bid=3123',
+                    global: 'ReactDOM'
+
+                }
+            ]
+        })
+    ]
+}
+```
+- 利用SplitChunksPlugin进行公共脚本分离，Webpack4内置的，替代CommonsChunkPlugin插件
+```
+module.exports = {
+    optimization: {
+        splitChunks: {
+            chunks: 'async', // async-异步引入的库进行分离(默认)、initial-同步引入的库进行分离、all-所有引入的库进行分离(推荐)
+            minSize: 30000, // 分离的包体积的大小
+            maxSize: 0,
+            minChunks: 1, // 设置某一个方法最小的使用次数
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                }
+            }
+        }
+    }
+}
+
+module.exports = {
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /(react\react-dom)/, // 匹配出需要分离的包
+                    name: 'vendors', // 分离出来的文件名称
+                    chunks: 'all'
+                }
+            }
+        }
+    }
+}
+```
+
+* tree shaking(摇树优化)
+- 概念：1个模块可能有多个方法，只能其中的某个方法使用到了，则整个方法都会被打到bundle里面去，tree shaking就是只把用到的方法打入bundle，没用到的方法会在uglify阶段被擦除掉。
+- 使用：webpack默认支持，在.bablerc里设置modules: false即可；production mode的情况下默认开启
+- 要求：必须是ES6的语法，CJS的方式不支持
+* DCE(dead code elimination)
+- 代码不会被执行，不可到达
+- 代码执行的结果不会被用到
+- 代码只会影响死变量（只写不读）
+* tree-shaking原理
+- 利用ES6模块的特点：只能作为模块顶层的语句出现、import的模块名只能是字符串常量、import binding是immutable的
+- 代码擦除：uglify阶段删除无用代码
+
+* Scope Hoisting使用和原理分析
+- 现象：构建后的代码存在大量闭包代码。会导致的问题有：大量函数闭包包裹代码，导致体积增大（模块越多越明显）、运行代码时创建的函数作用域变多，内存开销变大
+- scope hoisting原理：将所有模块的代码按照引用顺序放在一个函数作用域里，然后适当的重命名一些变量以防变量名冲突。对比：通过scope hoisting可以减少函数声明代码和内存开销
+- scope hoisting使用 webpack mode为production默认开启，必须是ES6语法，CJS不支持
+
+* 代码分割和动态import
+- 代码分割的意义：对于大的web应用来讲，将所有的代码都放在一个文件中显然是不够有效的，特别是当你的某些代码块是在某个特殊的时候才会被使用到，webpack有一个功能就是将你的代码库分割成chunks(语块)，当代码运行到需要它们的时候再进行加载。
+- 适用的场景：抽离相同代码到一个共享块、脚本懒加载，使得初识下载的代码更小
+- 懒加载JS脚本的方式：CommonJS: require.ensure; ES6:动态import(目前还没有原生支持，需要babel转换)
+* 如何使用动态import?
+- 安装babel插件 npm i @babel/plugin-syntax-dynamic-import --save-dev
+- ES6: 动态import(目前还没有原生支持，需要babel转换)
+```
+{
+    "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}
+```
+
+* 在webpack中使用ESLint
+- Airbnb: eslint-config-airbnb、eslint-config-airbnb-base
+- ESLint如何执行落地：和CI/CD系统集成（放到pipleline里面）、和webpack集成
+- 本地开发阶段增加precommit钩子，安装husky npm i husky --save-dev, 然后增加npm script,通过lint-staged增量检查修改的文件
+```
+"scripts": {
+    "precommit": "lint-staged"
+},
+"lint-staged": {
+    "linters": {
+        "*.{js,scss}": ["eslint --fix", "git add"]
+    }
+}
+```
+
+* webpack打包组件和基础库，webpack除了可以用来打包应用，也可以用来打包js库
+- 如何只对.min压缩，通过include设置只压缩min.js结尾的文件
+```
+module.exports = {
+    mode: "none",
+    entry: {
+        "large-number": "./src/index.js",
+        "large-number.min": "./src/index.js"
+    },
+    output: {
+        filename: "[name].js",
+        library: "largeNumber",
+        libraryTarget: "umd"
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                include: /\.min\.js$/
+            })
+        ]
+    }
+}
+```
+- npm publish发布一个包，前提需要有个npm账号，登录进去
+
+* webpack实现SSR打包
