@@ -624,5 +624,14 @@ module.exports = {
 * webpack实现SSR打包
 - 服务端渲染(ssr)是什么？渲染：HTML + CSS + JS + Data -> 渲染后的HTML
 - 服务端：所有模板等资源都存储在服务端、内网机器拉取数据更快、一个HTML返回所有数据
+- SSR的优势：减少白屏时间、对于SEO比较友好
 - 客户端渲染vs服务端渲染
-![客户端渲染和服务端渲染](/client_server_render.jpeg "client-server-render")
+![alt text](./client_server_render.jpeg "box model")
+
+* SSR代码实现思路
+- 服务端：使用react-dom/server的renderToString方法将React组件渲染成字符串；服务端路由返回对应的模板。
+- 客户端：打包出针对服务端的组件
+
+* webpack ssr打包存在的问题
+- 浏览器的全局变量(Node.js中没有document, window)，组件适配-将不兼容的组件根据打包环境进行适配；请求适配：将fetch或者ajax发送请求的写法改成isomorphic-fetch或者axios
+- 样式问题(Node.js无法解析css)，方案一：服务端打包通过ignore-loader忽略掉css的解析；方案二：将style-loader替换成isomorphic-style-loader
