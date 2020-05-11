@@ -622,3 +622,7 @@ module.exports = {
 - npm publish发布一个包，前提需要有个npm账号，登录进去
 
 * webpack实现SSR打包
+- 服务端渲染(ssr)是什么？渲染：HTML + CSS + JS + Data -> 渲染后的HTML
+- 服务端：所有模板等资源都存储在服务端、内网机器拉取数据更快、一个HTML返回所有数据
+- 客户端渲染vs服务端渲染
+![客户端渲染和服务端渲染](/client_server_render.jpeg "client-server-render")
