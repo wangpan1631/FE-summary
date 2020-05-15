@@ -11,6 +11,7 @@
 4. vuex和localstorage区别
 > 参考[vuex和localStorage区别](https://my.oschina.net/u/560237/blog/1797633 "vuex和localStorage区别")
 5. 为什么要用vuex或者redux
+https://blog.csdn.net/muzidigbig/article/details/83784037
 6. http1.0，http1.1，http2区别
 7. 函数柯里化
 8. a，b变量交换
