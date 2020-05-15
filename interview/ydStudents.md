@@ -14,6 +14,7 @@
 https://blog.csdn.net/muzidigbig/article/details/83784037
 6. http1.0，http1.1，http2区别
 7. 函数柯里化
+https://www.cnblogs.com/maoxiaodun/p/10035861.html
 8. a，b变量交换
 > 真是一道思维拓展题，很简单，就看你能想到多少方法[不借助第三个变量交换a,b两个变量值](https://blog.csdn.net/web_hwg/article/details/75045689 "不借助第三个变量交换a,b两个变量值")
 9. 缓存有哪些，有什么区别
