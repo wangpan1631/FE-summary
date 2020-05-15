@@ -22,6 +22,7 @@ https://www.cnblogs.com/maoxiaodun/p/10035861.html
 10. vue双向绑定的原理
 > 参考[vue双向绑定原理](https://www.jianshu.com/p/23180880d3aa "vue双向绑定原理")
 11. 开发环境热更新优化方式
+https://www.jb51.net/article/147367.htm
 12. webpack打包优化做了哪些
 13. 对MVC，MVVM，MVP的理解
 > 参考[对MVC，MVVM，MVP的理解](https://www.jianshu.com/p/aeead9b020fb "对MVC，MVVM，MVP的理解")
