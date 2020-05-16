@@ -37,6 +37,7 @@ https://www.jb51.net/article/147367.htm
 ## css3动画 transform
 
 ## js 按需加载的原理
+- 图片懒加载原理：https://blog.csdn.net/w1418899532/article/details/90515969
 
 ## https 为什么比http 安全
 
