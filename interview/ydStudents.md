@@ -86,6 +86,7 @@ https://www.jb51.net/article/147367.htm
 1. session和cookie
 2. sessionStroage、localStroage、indexedDB的区别
 3. 实现一个功能，发送请求5s时间后，如果没有数据返回，中断请求,提示错误
+- https://www.cnblogs.com/itgezhu/p/11573410.html
 4. proxy原理
 5. event Loop
 6. valueOf&toString的区别
