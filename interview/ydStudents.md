@@ -136,12 +136,17 @@ https://www.jb51.net/article/147367.htm
 2. mvvm流程
 3. vuex是啥，如何实现一个自定义的插件
 4. vue3.0的了解
+- https://www.cnblogs.com/it-Ren/p/10976095.html
 5. vue3.0 为什么要用代理
+- https://blog.csdn.net/weixin_34343000/article/details/88038578
 6. A、B两个条件组件，如何做到webpack只打包条件为true的组件，false的组件不打包
 7. vm的原理
 8. MVC和MVVM的区别
 9. vue的生命周期以及每个阶段做的事
 10. keep-alive的作用，actived和deactived
+- keep-alive可以在组件切换时，保存其包裹的组件的状态，使其不被销毁，防止多次渲染。
+其拥有两个独立的生命周期钩子函数 actived 和 deactived，使用keep-alive包裹的组件在切换时不会被销毁，而是缓存到内存中并执行 deactived 钩子函数，命中缓存渲染后会执行 actived 钩子函数。
+- https://blog.csdn.net/qq_38861711/article/details/98185106
 11. 子组件除了通过$emit的方式，如何跟父组件通信
 12. 不同组件之间可以直接通信嘛
 13. 子组件可以直接改变父组件的数据么，说明原因
