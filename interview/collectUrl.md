@@ -10,7 +10,7 @@
 [20道大厂面试题](https://juejin.im/post/5d124a12f265da1b9163a28d "20道大厂面试题")
 
 **面试技巧**
-[5分钟谈前端面试](https://mp.weixin.qq.com/s/hSD9Mr3Mt72PN5f7LnJ1Ow "5分钟谈前端面试")
+[5分钟谈前端面试](https://mp.weixin.qq.com/s/hSD9Mr3Mt72PN5f7LnJ1Ow "5分钟谈前端面试") --- 无效
 
 **刷题指南**
 [leetcode](https://leetcode.com/problemset/all/ "leetcode")
