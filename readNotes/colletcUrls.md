@@ -15,7 +15,7 @@
 [数组的几个不low操作](https://juejin.im/post/5c92e385e51d450ce11df1d1 "数组的几个不low操作")
 [JS数组操作合集](https://juejin.im/post/5caf2e12e51d456e831f68e0?utm_source=wechat&from=timeline&isappinstalled=0 "JS数组操作合集")
 
-**React**
+**React 郭东东**
 
 [面试关于react](https://juejin.im/post/5c92f499f265da612647b754?utm_source=wechat "面试关于react")
 
