@@ -1,5 +1,6 @@
 # 面试题
 * [vue面试题](https://mp.weixin.qq.com/s/6J6nUMRAmUD_hsKue2oltg "vue面试题")
+* [你要的vue面试题都在这里](https://copyfuture.com/blogs-details/20200602163344464l9gte6xucqvm5cd "你要的vue面试题都在这里")
 
 * vue3.0中为何使用proxy?
 - 参考：https://www.jianshu.com/p/a4cd58652c78
