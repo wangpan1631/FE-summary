@@ -1,5 +1,7 @@
 #### 极客时间Nodejs
 * 课件和demo地址：https://github.com/geektime-geekbang/geed-nodejs
+* nodejs是最适合做BFF层的，让前端有能力自由组装后台数据，这样可以减少大量的业务沟通成本。加快业务的迭代速度
+* RPC调用，进程调用，系统运维
 # 基础
 * nodejs是一个基于chrome v8引擎的js运行环境，nodejs使用了一个事件驱动、非阻塞式I/O的模型。
 * nodejs BFF层
@@ -8,16 +10,22 @@
 
 # nodejs应用场景
 * 用在web服务
-搜索引擎优化+首屏速度优化=服务端渲染
-服务端渲染+前后端同构=Nodejs
+- 搜索引擎优化+首屏速度优化=服务端渲染
+- 服务端渲染+前后端同构=Nodejs
 * 使用Nodejs开发构建工具
 * 开发 开发工具，如vscode
 * 开发游戏（大型应用需要给使用者自定义模块的能力）
 * 直播网站
 
 # 技术预研究
+* BFF层---backend for frontend
 * 对用户侧提供HTTP服务
 * 使用后端RPC服务 
+* nodejs里面没有requestAnimationFrame()方法(指浏览器的下一帧)，用setImmediate()方法替代
+
+# nodejs内置模块
+* EventEmitter
+- 观察者模式---addEventListener/removeEventListener
 
 # nodejs的非阻塞I/O
 * I/O即Input/Output, 一个系统的输入和输出
@@ -92,6 +100,63 @@ class GeekTime extends EventEmitter {
 * 二进制协议：更小的数据包体积、更快的编解码速率（二进制0101更适宜计算机理解，json，key-value更适合人类理解）
 
 * Buffer 编解码二进制数据包
-- buffer库 protocol buffers
+- buffer库 protocol-buffers
 
 * net建立多路复用的RPC通道
+
+* 实战前的技术预研之Node.js基础
+- 一方面向前提供HTTP服务
+- 另一方面向后进行RPC通信
+
+**nodemon插件可以监听文件变化，自动重启服务**
+
+* 使用ES6模板字符串实现模板引擎，是所有模板引擎里面性能最高的。
+- 通过nodejs里面的vm模块编译js形成函数，要实现xss过滤、模板helper函数，也要实现include子模板
+
+* http接口模式分为restful和graphQL
+- API服务-RESTful---简单易懂(根据路由的method来决定)；可以快速搭建；在数据的聚合方面有很大劣势
+- API服务 - GraphQL---专注数据聚合，前端要什么就返回什么
+* graphQL官网写的比npmjs好一些
+
+* 前后端同构的难点在于数据处理，所有出来了Next.js服务端渲染框架
+- axios也是可以前后端兼容使用的
+
+**前后端同构的关键是注重职责的分离**
+
+* HTTP服务性能测试
+- 压力测试工具：ab(apache bench); webbench
+
+- nodejs自带的性能分析工具profile
+$ node --prof youfilename
+
+- chrome devtool来调试nodejs  
+chrome:inspect
+
+- Clinic.js库
+
+尽量把中间里面的一些计算移出去，移动到上面，程序启动的时候去执行。
+
+* Javascript代码性能优化
+- 计算性能优化的本质---减少不必要的计算； 空间换时间
+- 思考：在用户能感知到的时间里，这个计算是不是必要的？
+- nodejs http服务性能优化准则：提前计算（启动阶段 <-- 服务阶段）
+
+* 垃圾回收机制
+- 内存优化管理
+- 新生代：容量小，垃圾回收更快
+- 老生代：容量大，垃圾回收更慢
+
+- nodejs Buffer的内存分配策略
+
+* nodejs子进程与线程
+- 进程---操作系统挂载运行程序的单元，拥有一些独立的资源，如内存等。
+- 线程---进行运算调度的单元，进程内的线程共享进程内的资源
+
+- Node.js的事件循环：主线程运行v8与javascript；多个子线程通过事件循环被调度
+
+* node.js子进程与线程
+- 使用子进程或线程利用更多cpu资源
+
+- node.js里cluster模块
+
+nodejs的稳定性是一个比较严重的问题，node.js进程守护

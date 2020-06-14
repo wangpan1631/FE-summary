@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+        // https://juejin.im/post/5ab20c58f265da23a228fe0f
         // about Promise
         // Promise是一个构造函数，需要new它，然后得到一个实例。
         // Promise是一个状态机，分别是pending(等待态)、fulfilled(成功态)、rejected(失败态)
@@ -16,7 +17,8 @@
         // 成功态，只要有一个为失败态，大Promise就是失败态。
         // Promise.race()，也可以将多个Promise实例包装成一个Promise实例。与all不同的是，大Promise的状态由第一个转变状态的小Promise的状态决定。
 
-        // myPromise
+        // myPromise, Promise是一个需要接受一个执行器的构造函数，执行器提供两个方法，内部有状态机制，原型链上有then方法。
+        // 下面是一个极简版的promise, 详细的可以参照最上面的链接内容
         function Promise(executor){ //executor是一个执行器（函数）
             let _this = this // 先缓存this以免后面指针混乱
             _this.status = 'pending' // 默认状态为等待态
@@ -48,6 +50,30 @@
             }
         }
         module.exports = Promise  // 导出模块，否则别的文件没法使用
+
+        // Promise.all()的实现
+        Promise.all = function (promises) {
+            return new Promise((resolve, reject) => {
+                promises = Array.from(promises);
+                if (promises.length === 0) {
+                    resolve([]);
+                } else {
+                    let result = []; // 最终返回值的结果
+                    let index = 0; // 表示成功了多少次
+                    for (let i = 0; i < promises.length; i++) {
+                        Promise.resolve(promises[i]).then(data => {
+                            result[i] = data;
+                            if (++index === promises.length) {
+                                resolve(result);
+                            }
+                        }, err => {
+                            reject(err);
+                            return;
+                        })
+                    }
+                }
+            })
+        }
 
     </script>
 </body>
