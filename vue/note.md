@@ -11,7 +11,6 @@ https://zhuanlan.zhihu.com/p/92407628
 
 # vue3.0新特性
 - https://www.cnblogs.com/it-Ren/p/10976095.html
-- https://www.cnblogs.com/it-Ren/p/10976095.html
 
 * 响应式数据的原理
 - 核心就是Object.defineProperty()
@@ -34,8 +33,8 @@ dirty: true 实现了缓存
 * watch中的deep: true是如何实现的。--- 递归
 - 当用户指定了watch中的deep属性为true时，如果当前监控的值是数组类型。会对对象中的每一项进行求值，此时会将watcher存入到对应属性的依赖中，这样数组中对象发生变化时也会通知数据更新。
 
-* vue组件中的声明周期
-* 要掌握每个声明周期什么时候被调用
+* vue组件中的生命周期
+* 要掌握每个生命周期什么时候被调用
 - beforeCreate在实例初始化之后，数据观测(data observer)之前被调用。
 - create实例已经创建完成之后被调用。在这一步，实例已完成一下的配置：数据观测(data observe)，属性和方法的运算，watch/event事件回调，这里没有$el
 - beforeMount在挂载开始之前被调用：相关的render函数首次被调用
