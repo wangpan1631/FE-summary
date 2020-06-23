@@ -28,7 +28,10 @@
  ```
 
 let ast = parseHTML(template);
-let code = generate(ast);
+// 核心就是字符串拼接
+let code = generate(ast); // 代码生成 => 拼接字符串
+code = `with(this){return ${code}}`;
+let render = new Function(code); // 相当于把字符串变成了函数
  ```
 
  如果同时传入template 和 render 默认会采用render抛弃template
@@ -39,3 +42,7 @@ let code = generate(ast);
  * 常见的数据结构需要掌握：栈、队列、数组、链表、集合、hash表、树
 
  html 解析就是遇到一个解析一个，是深度优先
+
+
+ * Vue是不是MVVM框架？
+ - 不全是，只是受到了MVVM模式的启发
