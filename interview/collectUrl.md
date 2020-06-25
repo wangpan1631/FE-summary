@@ -18,15 +18,15 @@
 [43道JS基础面试题](https://mp.weixin.qq.com/s/kkSu5NQeRImTWoWCgK6d9A "43道JS基础面试题")
 [43道JS基础面试题的github](https://github.com/lydiahallie/javascript-questions "43道JS基础面试题的github")
 
-[前端100问](https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg "前端100问")
+[木易杨前端100问](https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg "木易杨前端100问")
 
-[壹题](https://juejin.im/post/5d23e750f265da1b855c7bbe "壹题")
+[壹题](https://juejin.im/post/5d23e750f265da1b855c7bbe "壹题")  ---  **
 
 [大厂高频面试题](https://github.com/ly2011/blog/issues/153 "大厂高频面试题")
 
 [前端面试题](https://blog.csdn.net/u012551928/article/details/88523968#_1 "前端面试题")
 
-[19秋社招面试总结](https://mp.weixin.qq.com/s/UiX8dvAsP7r0nHb-XDmdHA "19秋社招面试总结")
+[19秋社招面试总结](https://mp.weixin.qq.com/s/UiX8dvAsP7r0nHb-XDmdHA "19秋社招面试总结")   ---- 无效 已删
 
 [JS面试重点](https://mp.weixin.qq.com/s/b2Wh_oRlUEb-dyhMtrEQIQ "JS面试重点")
 
@@ -34,9 +34,9 @@
 
 [面试题汇总](https://segmentfault.com/a/1190000017137059 "面试题汇总")
 
-[大厂面试题](https://blog.csdn.net/dianli5060/article/details/101340153 "大厂面试题")
+[大厂面试题](https://blog.csdn.net/dianli5060/article/details/101340153 "大厂面试题")  --- **
 
-[400道大厂面试题](http://www.yidianzixun.com/article/0Lk0g8cI "400道大厂面试题")
+[400道大厂面试题](http://www.yidianzixun.com/article/0Lk0g8cI "400道大厂面试题")   ---  **
 
 
 https://github.com/frontend9/fe9-interview

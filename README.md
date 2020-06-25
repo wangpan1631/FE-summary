@@ -63,6 +63,7 @@ console.log([...myIterable]); // [1, 2, 3]
 ```
 
 [Symbol使用场景举例](https://zhuanlan.zhihu.com/p/22652486 "Symbol使用场景举例")
+[JS symbol的学习](https://www.jianshu.com/p/fd76d308b742 "JS symbol的学习")
 
 * Object, 对象的定义是“属性的集合”。属性分为数据属性和访问器属性，二者都是key-value结构，key可以是字符串或者Symbol类型。JavaScript中的“类”， 仅仅是运行时对象的一个私有属性，而JavaScript中是无法自定义类型的。
 * JavaScript中的几个基本类型，都在对象类型中有一个“亲戚”，它们是：Number String Boolean Symbol, 所以，我们必须认识到3与new Number(3)是完全不同的值，前者是Number类型，后者是Object类型，Number String Boolean，三个构造器是两用的，当跟new搭配时，它们产生对象，当直接调用时，它们表示强制类型转换。Symbol函数比较特殊，直接用new调用它会抛出错误，但它们仍然是Symbol对象的构造器。

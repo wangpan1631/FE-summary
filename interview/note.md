@@ -795,6 +795,33 @@ opaciy:0不会让元素从渲染树消失，渲染元素继续占据空间，只
 * var声明的变量是挂载到window上面的，而let const声明的不是挂载在window上面的, 而是存在一个块级作用域内。
 * let const声明的变量的作用域是块级的。var声明的不是
 
+* 变量的赋值可以分为三个阶段：
+- 创建变量，在内存中开辟空间
+- 初始化变量，将变量初始化为undefined
+- 真正赋值
+
+* 关于let、var和function
+- let的[创建]过程被提升了，但是初始化没有提升
+- var的[创建]和[初始化]都被提升了
+- function的[创建][初始化]和[赋值]都被提升了。
+
+* var可以重复声明同一个变量，但是const 和 let不行
+```
+  var num = 1;
+  var num = 2;
+  console.log(num); // 2
+
+  const num = 1;
+  const num = 2;
+  console.log(num); // Uncaught SyntaxError: Identifier 'num' has already been declared
+
+  let num = 1;
+  let num = 2;
+  console.log(num); // Uncaught SyntaxError: Identifier 'num' has already been declared
+
+
+```
+
 48. js中的map some every forEach用法总结：https://blog.csdn.net/weixin_36934930/article/details/81061063
 
 49. [JS中slice,splice,split的区别](https://www.cnblogs.com/mangoWeb/p/3517801.html "sllice/splice/split")

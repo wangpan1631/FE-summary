@@ -330,3 +330,69 @@ var output = (function(){
 console.log(output);
 ```
 - 结果是1，delete操作符是将对象的属性删除的操作，但这里的x并不是对象的属性，delete操作符并不起作用。
+
+26. 下面代码的输出是什么？
+```
+function Person(firstName, lastName){
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+const member = new Person("Lydia", "Hallie");
+Person.getFullName = () => this.firstName + this.lastName;
+console.log(member.getFullName);
+```
+- 结果会打印出TypeError  我们不能像使用常规对象那样向构造函数添加属性。如果要一次向所有对象添加功能，则必须使用原型。
+
+27. `setInterval`方法的返回值是什么？
+```
+setInterval(() => console.log("Hi"), 1000);
+// 参考答案：它返回一个唯一的id，此id可用于使用clearInterval()函数清除该定时器。
+其实打印出来是返回一个id 1，和Hi，当然在这里说打印出来Hi也没有什么价值
+```
+
+28. 下面的代码输出什么？
+```
+(() => {
+  let x, y;
+  try {
+    throw new Error();
+  } catch (x) {
+    (x = 1), (y = 2);
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
+})()
+// 打印出来 1 undefined 2
+```
+
+29. 下面的代码输出什么？
+```
+function sayHi() {
+  return (() => 0)();
+}
+
+typeof sayHi();
+// 输出 'number'
+```
+
+30. 单击下面的html片段打印的内容是什么？
+```
+<div onclick="console.log('div')">
+  <p onclick="console.log('p')">
+    Click here!
+</div>
+// p div 在事件传播期间，有三个阶段：捕获 目标和冒泡，默认情况下，事件处理程序在冒泡阶段执行(除非您将useCapture设置为true)。它从最深的嵌套元素向外延伸。
+```
+
+31. 下面代码的输出是什么？
+```
+String.prototype.giveLydiaPizza = () => {
+  return 'Just give Lydia pizza already!';
+};
+const name = 'Lydia';
+name.giveLydiaPizza();
+// 输出'Just give Lydia pizza already!'
+String是一个内置的构造函数，我们可以为它添加属性。
+```
+
