@@ -21,3 +21,5 @@ function A() {
 - 表现出异步的原理是怎样的？---在 React 的 setState 函数实现中，会根据 isBatchingUpdates(默认是 false) 变量判断是否直接更新 this.state 还是放到队列中稍后更新。然后有一个 batchedUpdate 函数，可以修改 isBatchingUpdates 为 true，当 React 调用事件处理函数之前，或者生命周期函数之前就会调用 batchedUpdate 函数，这样的话，setState 就不会同步更新 this.state，而是放到更新队列里面后续更新。这样你就可以理解为什么原生事件和 setTimeout/setinterval 里面调用 this.state 会同步更新了吧，因为通过这些函数调用的 React 没办法去调用 batchedUpdate 函数将 isBatchingUpdates 设置为 true，那么这个时候 setState 的时候默认就是 false，那么就会同步更新。
 
 * [从0手写redux](https://mp.weixin.qq.com/s/XDVAN-GQcxlJvg8jjGqyLw "从0手写redux")
+
+* [react何时异步？何时同步？](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/17 "react何时异步？何时同步？")

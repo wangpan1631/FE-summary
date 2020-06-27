@@ -14,7 +14,7 @@ https://juejin.im/post/5d124a12f265da1b9163a28d
 函数柯里化：只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数。（是高阶函数的一种特殊用法）
 
 手写防抖和节流
-https://juejin.im/post/5d124a12f265da1b9163a28d
+https://juejin.im/post/5d124a12f265da1b9163a28d  刘小夕
 
 介绍下深度优先遍历(DFS)和广度优先遍历，如何实现？
 https://github.com/ly2011/blog/issues/153

@@ -397,6 +397,9 @@ console.log('---data--', wang instanceof Person);
 * 防抖(debounce)：就是指触发事件后在n秒内函数只能执行一次，如果在n秒内又触发了事件，则会重新计算函数执行时间。
 * 节流(throttle)：就是指连续触发事件但是在n秒中只执行一次函数。节流会稀释函数的执行频率。
 
+[这个讲防抖比较好](https://github.com/mqyqingfeng/Blog/issues/22 "这个讲防抖比较好") 
+[这个讲节流比较好](https://github.com/mqyqingfeng/Blog/issues/26 "这个讲节流比较好") 
+
 [防抖与节流](https://www.jianshu.com/p/c8b86b09daf0 "防抖与节流")
 [JS奇淫巧技之防抖与节流](https://www.cnblogs.com/chenqf/p/7986725.html "JS奇淫巧技之防抖与节流")
  * [debounce and throttle](https://github.com/ljianshu/Blog/issues/43 "debounce and throttle")
@@ -894,3 +897,9 @@ import的接口是read-only（只读状态），不能修改其变量值。 即�
 - 客户端 -- ACK --> 服务端，CLOSED
 
 63. [defer和async的区别](https://segmentfault.com/q/1010000000640869 "defer和async的区别")
+
+64. 异步发展流程
+- callback 多个请求并发，不好管理，链式调用导致嵌套的过多
+- promise 优点：可以优雅的处理异步，处理错误，缺点：还是基于回调的，还是会有嵌套的问题
+- generator + co dva 让代码像同步一样的执行，不能支持try + catch
+- async await 解决异步问题的目前的终极的解决放啊，支持try + catch
