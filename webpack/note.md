@@ -177,7 +177,7 @@ module.exports = {
 
 * 资源解析：解析图片
 * file-loader 用于处理文件(图片、字体)
-* url-loader 也可以处理图片和字体，可以设置较小资源自动base64(注：base64需要设置阈值，base64可以减少http请求，但是会是css文件体积变大，需要在两者之间做个权衡)
+* url-loader 也可以处理图片和字体，可以设置较小资源自动base64(注：base64需要设置阈值，base64可以减少http请求，但是会使css文件体积变大，需要在两者之间做个权衡)
 **注意：解析图片时候，使用上面两个loader，需要配置options(name、publicPath)，图片才能正常显示**
 
 * webpack中的文件监听(文件监听是在发现源码发生变化时，自动重新构建出新的输出文件)
