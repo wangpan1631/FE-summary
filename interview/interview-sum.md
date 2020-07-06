@@ -38,5 +38,14 @@
 * 手机扫描pc端二维码实现登录，内部的实现原理是什么？
 * 设计模式
 
-* 通一个项目用不同的框架
+* 一个项目用不同的框架
 
+
+# 得物
+* webpack里面hash chunkhash contenthash的区别
+- hash是跟整个项目的构建相关，构建生成的文件hash值都是一样的，所以hash计算是跟整个项目的构建相关，同一次构建过程中生成的hash都是一样的，只要项目里有文件更改，整个项目构建的hash值都会更改。
+- chunkhash和hash不一样，它根据不同的入口文件(Entry)进行依赖文件解析，构建对应的chunk，生成对应的hash值。一般用于js文件
+- contenthash表示由文件内容产生的hash值，内容不同产生的contenthash值也不一样，在项目中，通常做法是把项目中css都抽离出对应的css文件来加以引用。
+
+* ES6编译成ES5的时候，用了babel，为什么还要用polyfill
+* vue nextTick实现原理

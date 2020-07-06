@@ -18,7 +18,8 @@
 > react合成事件理解，如果DOM上绑定了过多的事件处理函数，整个页面响应以及内存占用可能都会受到影响。react为了避免这类DOM事件滥用，同时屏蔽底层不同浏览器之间的事件系统差异，实现了一个中间层——SyntheticEvent
 1. 当用户在为onClick添加函数时，React并没有将Click事件绑定在DOM上面
 2. 而是在document处监听所有支持的事件，当事件发生并冒泡到document处时，react将事件内容封装交给中间层SyntheticEvent(负责所有事件合成)
-3. 所以当事件触发的时候，对使用统一的分发函数dispatchEvent将指定函数执行。
+3. 所以当事件触发的时候，会使用统一的分发函数dispatchEvent将指定函数执行。
+* 我们都知道react 的所有事件并没有绑定到具体的dom节点上而是绑定在了document 上，然后由统一的事件处理程序来处理，同时也是基于浏览器的事件机制（冒泡），所有节点的事件都会在 document 上触发。
 
 * react生命周期可以参见[菜鸟教程](https://www.runoob.com/react/react-component-life-cycle.html "菜鸟教程")
 

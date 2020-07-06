@@ -16,7 +16,12 @@
 从入口出发，使用@babel/traverse插件 递归查找所有的依赖模块，主要是把文件路径和文件内容做一个映射，生成依赖关系图
 然后需要把AST转换成code  babel-generator
 递归解析所有依赖项，生成依赖关系图（使用文件路径作为每个模块的唯一标识符,保存对应模块的依赖对象和文件内容）
-重写require函数，输出bundle
+重写require函数，输出bundle，把文件内容写入到文件系统(node---fs.writeFileSync(filePath, bundle, 'utf-8'))
 
-
+* webpack热更新原理
+- 如果修改了一个或多个文件
+- 文件系统接收更改并通知webpack
+- webpack重新编译构建一个或多个模块，并通知HMR服务器进行更新
+- HMR Server使用webSocket通知HRM runtime需要更新，HMR运行时通过HTTP请求更新jsonp
+- HRM运行时替换更新中的模块，如果确定这些模块无法更新，则触发整个页面更新。
 

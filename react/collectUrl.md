@@ -12,6 +12,7 @@ function A() {
     return <h1>前端桃李</h1>
 }
 ```
+- React的自定义组件名为什么要首字母大写？ --- 我们在React中写的是JSX语法，但是浏览器无法识别JSX语法，因此我们需要通过babel对JSX语法进行转义，然后才能生成虚拟DOM对象，而原因就是在这里。如果创建自定义组件**首字母小写**，babel在转义时把它当成一个**字符串**传递进去，而把**首字母大写**了，babel在转义时传递了一个**变量**进去，问题就在这里，如果传递的是一个字符串，那么在创建虚拟DOM对象时，React会认为这是一个简单的HTML标签，但是这显然不是一个简单的HTML标签，因此去创建一个不存在的标签肯定会报错。
 - 为什么属性要用小驼峰？---因为JSX语法上更接近JavaScript而不是HTML，所以React DOM使用camelCase来定义属性的名称，而不使用HTML属性名称的命名约定。
 - React的事件是合成事件，内部原理非常复杂，React在组件加载(mount)和更新(update)时，将事件通过addEventListener统一注册到document上，然后会有一个事件池存储了所有的事件，当事件触发的时候，通过dispatchEvent进行事件分发。
 - 为什么React没有自动的把bind集成到render方法中？因为render多次调用每次都要bind会影响性能，所以官方建议你自己在constructor中手动bind达到性能优化。
