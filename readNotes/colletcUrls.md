@@ -51,6 +51,8 @@
 [十三月博客](http://auan.cn/front/ "十三月博客")
 [github前端知识体系梳理](https://github.com/Rashomon511/MyBlog "github前端知识体系梳理")
 [github 无畏前端](https://github.com/Rashomon511 "github 无畏前端")
+[大深海的技术博客 koa](https://chenshenhai.com/ "大深海的技术博客 koa")
+
 
 **nginx**
 [前端开发者必备的nginx知识](https://mp.weixin.qq.com/s/8nSRGcLXIG603igj9qk6og "前端开发者必备的nginx知识")

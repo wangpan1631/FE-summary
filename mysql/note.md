@@ -2,6 +2,7 @@
 
 ### 入门教程
 https://hezhiqiang-book.gitbook.io/mysql/di-yi-zhang
+https://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html#c1
 
 ### MySQL服务的启动、停止与卸载，在 Windows 命令提示符下运行:
 - 启动: net start MySQL
