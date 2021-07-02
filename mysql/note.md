@@ -14,4 +14,9 @@ https://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html#c1
 - 停止: net stop MySQL
 - 卸载: sc delete MySQL
 - 检查mysql的版本：mysqladmin --version
+- 查找是否有mysql的命令，find / -name mysql
 - 命令启动不了的话，需要通过计算机管理 --> 服务和应用程序 --> 服务 --> 找到mysql ，点击启动的方式来启动(windows)
+
+
+### 阿里云服务器安装mysql
+https://blog.csdn.net/mirkowug/article/details/105579092
