@@ -20,3 +20,7 @@ https://www.cnblogs.com/mr-wid/archive/2013/05/09/3068229.html#c1
 
 ### 阿里云服务器安装mysql
 https://blog.csdn.net/mirkowug/article/details/105579092
+
+### Mysql菜鸟入门教程
+- Mysql命令终止符是分号;
+- ->是换行符标识， 不要复制
