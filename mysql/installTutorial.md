@@ -20,3 +20,7 @@
    2. update user set password=password('123456') where user='root';
    3. flush privileges;
    4. exit;
+
+8. 用密码登录的方式：mysql -u root -p;  回车输入密码即可。
+
+9. 查询数据库用户表命令: select User,authentication_string,Host from user;
