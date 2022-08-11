@@ -25,7 +25,7 @@
 * 层叠：是说当数量相同时，通过层叠（后者覆盖前者）的样式
 
 6. 去除浮动影响，防止父级高度塌陷
-* 通过增加尾元素清楚浮动- :after/:clear:both
+* 通过增加尾元素清除浮动- :after/:clear:both
 * 创建父级BFC
 * 父级设置高度
 
@@ -39,9 +39,9 @@
 
 #### JS
 1. **数据类型（内置类型）**
-JS有7种内置类型，分为两大类型：基本类型和对象Object
+JS有7种内置类型，分为两大类型：基本类型和对象Object(具体分为object和function 函数类型都是function)
 
-* 基本类型：string  number  boolean null  undefined symbol
+* 基本类型：string  number  boolean null  undefined symbol bigint
 
 * 对于**undefined**, 有的编程规范要求用void 0代替undefined, 为什么呢？因为JavaScript的代码undefined是一个变量，而并非是一个关键字，这是JavaScript语言公认的设计失误之一，所以，我们为了避免无意中被篡改，建议使用viod 0来获取undefined值。
 * 对于**null**, 表示的是“定义了但是为空”，它的语义表示空值，与undefined不同，null是JavaScript关键字，所以在任何代码中，我们都可以放心使用null关键字来获取null值。
@@ -81,7 +81,7 @@ console.log([...myIterable]); // [1, 2, 3]
 
 #### JS的执行机制(js是一门单线程语言，Event Loop是JS的执行机制)
 [彻底搞懂JS执行机制](https://juejin.im/post/59e85eebf265da430d571f89 "彻底搞懂JS执行机制")
-[深入浅出JS运行机制](https://github.com/ljianshu/Blog/issues/2 "深入浅出JS运行机制")
+[深入浅出JS运行机制](https://github.com/ljianshu/Blog "深入浅出JS运行机制")
 
 #### this指向的总结[this](https://juejin.im/post/5b9f176b6fb9a05d3827d03f "this")
 - 查看函数在哪被调用。
