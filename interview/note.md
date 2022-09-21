@@ -377,6 +377,15 @@ if (result && (typeof(result) == 'object' || typeof(result) == 'function')) {
 }
 ```
 
+另外一种new的实现方式：
+```
+function _new(fn, ...arg) {
+    const obj = Object.create(fn.prototype);
+    const ret = fn.apply(obj, arg);
+    return ret instanceof Object ? ret : obj;
+}
+```
+
 12. instanceof 可以正确的判断对象的类型，因为内部机制是通过判断对象的原型链中是不是能找到类型的prototype。使用举例：
 ```
 [1] instanceof Array

@@ -7,6 +7,7 @@
 [百度面试题](https://mp.weixin.qq.com/s/Z7Msx-GY7RqWB6nNX99y5g "百度面试题")
 [参考答案](https://zhuanlan.zhihu.com/p/50506035 "参考答案")
 
+<!-- ！！值得看 -->
 [20道大厂面试题](https://juejin.im/post/5d124a12f265da1b9163a28d "20道大厂面试题")
 
 **面试技巧**
@@ -20,17 +21,16 @@
 
 [木易杨前端100问](https://mp.weixin.qq.com/s/J9uQmFLOGE6A4JpgDSXdJg "木易杨前端100问")
 
+<!-- 值得看 -->
 [壹题](https://juejin.im/post/5d23e750f265da1b855c7bbe "壹题")  ---  **
 
 [大厂高频面试题](https://github.com/ly2011/blog/issues/153 "大厂高频面试题")
 
 [前端面试题](https://blog.csdn.net/u012551928/article/details/88523968#_1 "前端面试题")
 
-[19秋社招面试总结](https://mp.weixin.qq.com/s/UiX8dvAsP7r0nHb-XDmdHA "19秋社招面试总结")   ---- 无效 已删
-
 [JS面试重点](https://mp.weixin.qq.com/s/b2Wh_oRlUEb-dyhMtrEQIQ "JS面试重点")
 
-[面试总结 看完弄懂](https://juejin.im/post/5b94d8965188255c5a0cdc02#heading-50 "面试总结 看完弄懂")
+[面试总结 看完弄懂](https://juejin.im/post/5b94d8965188255c5a0cdc02#heading-50 "面试总结 看完弄懂")    ----current----   20220920
 
 [面试题汇总](https://segmentfault.com/a/1190000017137059 "面试题汇总")
 
