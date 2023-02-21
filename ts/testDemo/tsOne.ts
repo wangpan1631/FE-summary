@@ -33,3 +33,54 @@ function printLabel2 (labelObj: labelValue) {
 }
 let myObj2 = {size: 20, label: 'size 20 object'};
 printLabel2(myObj2);
+
+// 枚举
+const enum Color {
+    RED,
+    GREEN,
+    PINK
+}
+const color1: Color[] = [Color.RED, Color.GREEN, Color.PINK];
+console.log('====', color1);
+
+// 类
+class Person {
+    name: string;
+    age: number;
+    constructor (name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+    sayHi(): void {
+        console.log(`Hi, This is ${this.name}`)
+    }
+}
+
+// 联合类型，用|分隔，可以是其中的任一个类型
+let count:string|number
+count = 10;
+count = '10';
+
+// 交叉类型，所有类型都要存在
+interface IpersonA {
+    name: string,
+    age: number
+}
+interface IpersonB {
+    name: string,
+    gender: string
+}
+let personW: IpersonA & IpersonB = {
+    name: 'www',
+    age: 40,
+    gender: 'male'
+}
+
+// 泛型
+function getValue<T>(arg:T):T { 
+    return arg;
+}
+// 多个参数 泛型
+function getValue2<T, U>(arg: [T, U]):[T, U] {
+    return arg;
+}

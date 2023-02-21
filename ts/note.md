@@ -1,0 +1,1 @@
+1. 查看支持的TS插件，https://www.typescriptlang.org/dt/search?search=
