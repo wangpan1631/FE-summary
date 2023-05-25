@@ -101,7 +101,12 @@ let personW: IpersonA & IpersonB = {
     gender: 'male'
 }
 
-// 泛型
+// 泛型---泛型英文是generics，是指在定义函数、接口或类的时候，不预先指定具体的类型，而是在使用的时候再指定类型的一种.
+// 泛型变量通常用T来表示，T可以表示任何类型。
+// for example as below
+function identity <T>(value: T): T{
+    return value;
+}
 /**
  * 
  * 不太好理解
